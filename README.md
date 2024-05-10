@@ -143,7 +143,10 @@ Each Django model is represented with a table on the ERD along with its attribut
 
 ## Technology Used
 
-### Programs used
+### Libraries and Frameworks Used
+[Bootstrap v5.2.3](https://getbootstrap.com/docs/5.2/getting-started/download/) - open-source CSS framework
+
+### Programs Used
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
 
 ## Features
