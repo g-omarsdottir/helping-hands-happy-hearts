@@ -149,4 +149,14 @@ Each Django model is represented with a table on the ERD along with its attribut
 ## Features
 *Testing and Bugs (separate)*
 ## Deployment and Local Development
+
+### Neon Database
+
+This project utilizes a relational database powered by [Neon.tech](https://neon.tech/), a serverless PostgreSQL solution.
+
+- Log into or sign up for a Neon account.
+- Create or navigate to your "Tier" (one free tier per user).
+- Navigate to the "Dashboard" on the left side menu.
+- In the section "Connection Details", you will find the link to the database displayed in the subsection "Connection String".
+
 ## Credits
