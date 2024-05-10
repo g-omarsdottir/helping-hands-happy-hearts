@@ -73,11 +73,15 @@ As a frequent visitor, I want to
 ### Layout
 The layout of the website is devided into an area accessible to all and area exclusively for logged-in users. 
 
-For better user experience and uncertainty avoidance about what the project is about, hesitance to sign up, and to able older people with little computer skills to be able to take advantage of what the platform has to offer, the website's content is visible to all. 
+For better user experience and uncertainty avoidance about what the project is about, hesitance to sign up, and to able older people with little computer skills to be able to take advantage of what the platform has to offer, the website's content is visible to all. This area contains the Hompage, the Offers & Requests page (Offers and Requests), the Sign-In page, and the Sign-Up page.
 
 To contribute content and engage in conversations, the users must be logged in.
 
+<details>
+<summary>Click for Layout Flowchart</summary>
+
 ![layout](/documentation/layout.png)
+</details>
 
 ### Wireframes
 Mobile Version
@@ -111,9 +115,24 @@ Desktop Version
 ## Project planning
 ### Database Schema
 
-The Entity Relationship Diagram for this database schema was created using diagrams.net
+This project utilizes a relational database powered by [Neon.tech](https://neon.tech/), a serverless PostgreSQL solution.
+
+The Entity Relationship Diagram (ERD, see below) was created using before starting the development process. Reduced complexity of the database entities and detailed planning streamlines the development process and minimizes the need for debugging.
+
+Each Django model is represented with a table on the ERD along with its attributes and model fields.
+
+**Database Overview:**
+-	Stores user profile, blog posts, and comments.
+-	The models utilize the Django Allauth User model.
+-	Relationships between the model fields are indicated using simple relationship lines.
+-	Separation of concern was implemented between user profile, posts, and comments for simplicity. Scalability of the models is not necessary for this project. 
+-	Security best practices were obtained using CSRF Tokens for data protection and authentication using Django Allauth.
+
+<details>
+<summary> Click for Entity Relationship Diagram (ERD)</summary>
 
 ![Entity Relationship Diagram](/documentation/erd.png)
+</details>
 
 
 ### Agile Development Methods 
@@ -125,7 +144,7 @@ The Entity Relationship Diagram for this database schema was created using diagr
 ## Technology Used
 
 ### Programs used
-[diagrams.net](diagrams.net) to create the layout flowchart and the database ERD
+[diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
 
 ## Features
 *Testing and Bugs (separate)*
