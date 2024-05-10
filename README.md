@@ -110,11 +110,23 @@ Desktop Version
 
 ## Project planning
 ### Database Schema
+
+The Entity Relationship Diagram for this database schema was created using diagrams.net
+
+![Entity Relationship Diagram](/documentation/erd.png)
+
+
 ### Agile Development Methods 
 - Epics
 - User Stories
 - MoSCoW Prioritization
 - Kanban board
+
+## Technology Used
+
+### Programs used
+[diagrams.net](diagrams.net) to create the layout flowchart and the database ERD
+
 ## Features
 *Testing and Bugs (separate)*
 ## Deployment and Local Development
