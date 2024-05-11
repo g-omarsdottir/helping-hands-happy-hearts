@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Root variables for colors and fonts */
+:root {
+    /* Fonts */
+    --heading: font-family: "Montserrat", sans-serif;
+    --text: font-family: "Work Sans", sans-serif;
+
+    /* Colors */
+    --black: #333333;
+    --off-white: #F4F4F4;
+    --warm-white: #FEF9EF;
+    --coral: #F07167;
+    --blue: #227C9D;
+    --yellow: #FFCB77;
+
+    /* Box shadow and border styles */
+    /*border: 2px groove #227C9D
+    box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75)*/
+    --box-shadow: 1px -1px 7px 0 #4E4A47;
+    --border: 1px solid #4E4A47;
+}
+
+/* Header */
