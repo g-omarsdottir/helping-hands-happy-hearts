@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Bootstrap for responsive styles is applied in the respective html template */
+
 /* Root variables for colors and fonts */
 :root {
     /* Fonts */
@@ -50,7 +52,7 @@ main {
     background-color: var(--off-white);
 }
 
-/* Header */
+/* Header -------------------------------------------------------------*/
 .navbar {
     background-color: var(--off-white);
     box-shadow: var(--black-box-shadow);
@@ -66,8 +68,14 @@ img.logo {
     /*flex-shrink: 0;  check */
 }
 
-/* Footer */
+/* Footer -------------------------------------------------------------*/
 footer {
     /* Stick footer to bottom */
     flex-shrink: 0;
+    background-color: var(--coral);
+    border-top: 4px solid var(--yellow);
+}
+
+footer li a {
+    margin-right: 20px;
 }
