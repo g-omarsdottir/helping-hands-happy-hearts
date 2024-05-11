@@ -31,13 +31,12 @@ If os does not find the constant, it sets DEBUG to False.
 This way, humar error and security related mistakes can be avoided.
 Setting it as an if else statement for better readability.
 """
-#DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = 'DEVELOPMENT' if os.environ["DEVELOPMENT"] else False
 
 ALLOWED_HOSTS = [
-    '8000-gomarsdotti-helpinghand-fmgv7z9vyb8.ws-eu111.gitpod.io'
+    '8000-gomarsdotti-helpinghand-fmgv7z9vyb8.ws-eu111.gitpod.io',
+    '8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
 ]
-
 
 # Application definition
 
@@ -132,6 +131,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

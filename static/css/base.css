@@ -3,12 +3,12 @@
 /* Root variables for colors and fonts */
 :root {
     /* Fonts */
-    --heading: font-family: "Montserrat", sans-serif;
-    --text: font-family: "Work Sans", sans-serif;
+    --heading-font: font-family: "Montserrat", sans-serif;
+    --text-font: font-family: "Work Sans", sans-serif;
 
     /* Colors */
     --black: #333333;
-    --off-white: #F4F4F4;
+    --off-white: #F5F5F5;
     --warm-white: #FEF9EF;
     --coral: #F07167;
     --blue: #227C9D;
@@ -17,8 +17,57 @@
     /* Box shadow and border styles */
     /*border: 2px groove #227C9D
     box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75)*/
-    --box-shadow: 1px -1px 7px 0 #4E4A47;
+    --blue-box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75);
+    --black-box-shadow: 1px -1px 7px 0 #4E4A47;
     --border: 1px solid #4E4A47;
 }
 
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(---text-font);
+    color: var(--black);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font);
+}
+
+main {
+    /* Push footer down */
+    flex: 1 0 auto;
+    background-color: var(--off-white);
+}
+
 /* Header */
+.navbar {
+    background-color: var(--off-white);
+    box-shadow: var(--black-box-shadow);
+}
+
+a.nav-link {
+    color: var(--black);
+    align-items: baseline; /* check */
+}
+
+img.logo {
+    width: 10rem;
+    /*flex-shrink: 0;  check */
+}
+
+/* Footer */
+footer {
+    /* Stick footer to bottom */
+    flex-shrink: 0;
+}
