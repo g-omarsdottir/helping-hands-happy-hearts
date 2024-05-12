@@ -34,8 +34,17 @@ Setting it as an if else statement for better readability.
 DEBUG = 'DEVELOPMENT' if os.environ["DEVELOPMENT"] else False
 
 ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1',
+    'http://localhost', 
+    'http://127.0.0.1',
     '8000-gomarsdotti-helpinghand-fmgv7z9vyb8.ws-eu111.gitpod.io',
     '8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
+]
+
+CSRF_TRUSTED_ORIGINS =[
+    'https://8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
+    'http://8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
 ]
 
 # Application definition
@@ -55,8 +64,6 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,6 +138,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Check: during development no email verification. Consider implementing to final version.
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_MIN_LENGTH = 3
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
