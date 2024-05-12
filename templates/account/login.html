@@ -1,9 +1,11 @@
 {% extends "account/base_entrance.html" %}
 {% load i18n %}
-{% load allauth account %}
-{% block head_title %}
+<!-- Loads crispy forms tags to use crispy-bootstrap to add styles directly -->
+{% load crispy_forms_tags %}
+
+{% block title %}
     {% trans "Sign In" %}
-{% endblock head_title %}
+{% endblock title %}
 {% block content %}
     {% element h1 %}
         {% trans "Sign In" %}
@@ -19,29 +21,24 @@
             {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
         </p>
         {% url 'account_login' as login_url %}
-        {% element form form=form method="post" action=login_url tags="entrance,login" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button type="submit" tags="prominent,login" %}
-                    {% trans "Sign In" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if LOGIN_BY_CODE_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element h2 %}
-            {% element button href=request_login_code_url tags="prominent,login,secondary" %}
-                {% trans "Mail me a sign-in code" %}
+        <div class="form p-2">
+            {% element form form=form method="post" action=login_url tags="entrance,login" %}
+                {% slot body %}
+                    {% csrf_token %}
+                    {% crispy form %}
+                    {% element fields form=form unlabeled=True %}
+                    {% endelement %}
+                    {{ redirect_field }}
+                {% endslot %}
+                {% slot actions %}
+                    {% element button type="submit" tags="prominent,login" %}
+                        {% trans "Sign In" %}
+                    {% endelement %}
+                {% endslot %}
             {% endelement %}
-        {% endelement %}
+        </div>
     {% endif %}
+
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
