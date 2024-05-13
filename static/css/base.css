@@ -68,6 +68,23 @@ img.logo {
     /*flex-shrink: 0;  check */
 }
 
+.active {
+    border-bottom: 2px groove var(--blue);
+    font-weight: 500;
+}
+
+/* Main ---------------------------------------------------------------*/
+
+/* Forms Django allauth ----------- */
+.form {
+    /*width: 100%;*/
+    margin: 20px auto;
+    box-shadow: var(--black-box-shadow);
+    border-radius: 10px;
+    display: block;
+}
+
+
 /* Footer -------------------------------------------------------------*/
 footer {
     /* Stick footer to bottom */

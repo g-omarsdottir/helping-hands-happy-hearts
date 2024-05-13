@@ -1,5 +1,5 @@
 {% extends "account/base_entrance.html" %}
-{% load i18n %}
+{% load allauth i18n %}
 <!-- Loads crispy forms tags to use crispy-bootstrap to add styles directly -->
 {% load crispy_forms_tags %}
 
@@ -8,27 +8,42 @@
 {% endblock title %}
 
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign In" %}
-    {% endelement %}
-    <div class="d-flex justify-content-center">
-        {% url 'account_login' as login_url %}
-        <div class="form p-2">
-            {% element form form=form method="post" action=login_url tags="entrance,login" %}
-                {% slot body %}
-                    {% csrf_token %}
-                    {% crispy form %}
-                    {% element fields form=form unlabeled=True %}
-                    {% endelement %}
-                    {{ redirect_field }}
-                {% endslot %}
+<div class="container">
+    <div class="text-center">
+        {% element h1 %}
+            {% trans "Sign In" %}
+        {% endelement %}
 
-                {% slot actions %}
-                    {% element button type="submit" tags="prominent,login" %}
-                        {% trans "Sign In" %}
-                    {% endelement %}
-                {% endslot %}
-            {% endelement %}
+        {% setvar link %}
+            <a href="{{ signup_url }}">
+            {% endsetvar %}
+            {% setvar end_link %}
+            </a>
+        {% endsetvar %}
+        <p>
+            {% blocktranslate %}If you have not created an account yet, then please {{ link }}sign up{{ end_link }} first.{% endblocktranslate %}
+        </p>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            {% url 'account_login' as login_url %}
+            <div class="col-xs-12 col-sm-10 col-xl-8 form p-2">
+                {% element form form=form method="post" action=login_url tags="entrance,login" %}
+                    {% slot body %}
+                        {% csrf_token %}
+                        {% element fields form=form unlabeled=True %}
+                        {{ form|crispy }}
+                        {% endelement %}
+                        {{ redirect_field }}
+                        {% endslot %}
+                        {% slot actions %}
+                        {% element button type="submit" tags="prominent,login" %}
+                            {% trans "Sign In" %}
+                        {% endelement %}
+                    {% endslot %}
+                {% endelement %}
+            </div>
         </div>
     </div>
+</div>
 {% endblock content %}
