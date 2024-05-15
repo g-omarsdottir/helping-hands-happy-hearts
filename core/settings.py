@@ -60,14 +60,19 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # Apps
+    'home',
+    'board',
+
+    #Third-party apps
     'crispy_forms',
     'crispy_bootstrap5',
     'autoslug',
-    'django_summernote'
+    'django_summernote',
     'djrichtextfield',
     'cloudinary',
-    'home',
-    'board',
+    'cloudinary_storage',
 ]
 
 SITE_ID = 1
