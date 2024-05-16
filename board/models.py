@@ -26,36 +26,37 @@ TOOLS_REQUIRED = [
 
 # Constants for Location Model ----------------------- #
 LOCATION = [
-    'CC', 'Cobblestone Crossing',
-    'EE', 'Elderberry End',
-    'FF', 'Foxglove Field',
-    'HH', 'Harvest Hollow',
-    'MM', 'Marigold Mews',
-    'OO', 'Old Oak End',
-    'PP', 'Primrose Path',
-    'RR', 'Redleaf Rise',
-    'SS', 'Shirebrook Springs',
-    'WW', 'Windrush Way',
-    'WB', 'Willowbrook',
+    ('AA', 'Arkenstone Avenue'),
+    ('BB', 'Buckleberry Bend'),
+    ('CC', 'Cobblestone Crossing'),
+    ('EE', 'Elderberry End'),
+    ('FF', 'Foxglove Field'),
+    ('HH', 'Harvest Hollow'),
+    ('MM', 'Marigold Mews'),
+    ('OO', 'Old Oak End'),
+    ('PP', 'Primrose Path'),
+    ('RR', 'Redleaf Rise'),
+    ('SS', 'Shirebrook Springs'),
+    ('WW', 'Windrush Way'),
 ]
 
 # Constants for Category Model ----------------------- #
 CATEGORIES = [
-    'offers', 'Offers',
-    'requests', 'Requests',
+    ('offers', 'Offers'),
+    ('requests', 'Requests'),
 ]
 
 # Constants for Subcategory Model -------------------- #
 SUBCATEGORIES = [
-    'carpool', 'Carpool',
-    'gardening', 'Gardening',
-    'kids', 'Kids',
-    'leisure', 'Leisure',
-    'pets', 'Pets',
-    'repairs', 'Repairs',
-    'tech', 'Tech',
-    'tools', 'Tools',
-    'other', 'Other',
+    ('borrow', 'Borrow'),
+    ('carpool', 'Carpool'),
+    ('gardening', 'Gardening'),
+    ('kids', 'Kids'),
+    ('leisure', 'Leisure'),
+    ('pets', 'Pets'),
+    ('repairs', 'Repairs'),
+    ('tech', 'Tech'),
+    ('other', 'Other'),
 ]
 
 # Models ------------------------------------------------------------ ##
