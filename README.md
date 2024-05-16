@@ -122,11 +122,12 @@ The Entity Relationship Diagram (ERD, see below) was created using before starti
 Each Django model is represented with a table on the ERD along with its attributes and model fields.
 
 **Database Overview:**
--	Stores user profile, blog posts, and comments.
--	The models utilize the Django Allauth User model.
--	Relationships between the model fields are indicated using simple relationship lines.
--	Separation of concern was implemented between user profile, posts, and comments for simplicity. Scalability of the models is not necessary for this project. 
--	Security best practices were obtained using CSRF Tokens for data protection and authentication using Django Allauth.
+- **Key Features:** Stores user profile, user posts, and comments.
+- **User Management:** The models utilize the Django Allauth User model.
+- **Content Management:** Users can create and update own content, interact with other users by commenting on and liking content and comments.
+- **Technical Design:** Separation of concern was implemented by deviding key components into individual Django Models *(see ERD)*. This allows for simple and reliable queries based on the primary key, as well as easy management and scalability.
+- Relationships between the model fields are indicated with relationship lines on the ERD.
+- **Security Practises:** Security best practices were obtained using CSRF Tokens for data protection and authentication using Django Allauth.
 
 <details>
 <summary> Click for Entity Relationship Diagram (ERD)</summary>
