@@ -123,12 +123,6 @@ class Post(models.Model):
     post_image = CloudinaryField(
         'image', 
         transformation=[{'width': 400, 'crop': 'scale'}],
-        options={
-            'quality': 75,
-            'fetch_format': 'webp',
-            'folder': 'post-images'
-        },
-        required=False,
     )
     availability = models.CharField(
         max_length=20,

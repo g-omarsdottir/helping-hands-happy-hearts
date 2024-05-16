@@ -173,3 +173,5 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 - In the section "Connection Details", you will find the link to the database displayed in the subsection "Connection String".
 
 ## Credits
+
+- [Cloudinary](https://github.com/cloudinary-devs/my-django-app/blob/main/django_app/forms.py) - Code from Cloudinary [tutorial](https://cloudinary.com/documentation/django_helper_methods_tutorial) to allow users to upload images.
