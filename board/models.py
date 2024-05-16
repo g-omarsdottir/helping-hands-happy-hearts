@@ -4,10 +4,12 @@ from autoslug import AutoSlugField
 from djrichtextfield.models import RichTextField
 from cloudinary.models import CloudinaryField
 
-# Constants for Post Model ------------------------------------------ #
+# Constants --------------------------------------------------------- ##
+
+# Constants for Post Model --------------------------- #
 STATUS = (
     (0, 'Draft'),
-    (1, 'Published'),
+    (1, 'Published')
 )
 
 AVAILABILITY_CHOICES = [
@@ -22,7 +24,7 @@ TOOLS_REQUIRED = [
     ('n.a.', 'No Tools Required'),
 ]
 
-# Constants for Location Model -------------------------------------- #
+# Constants for Location Model ----------------------- #
 LOCATION = [
     'CC', 'Cobblestone Crossing',
     'EE', 'Elderberry End',
@@ -37,7 +39,59 @@ LOCATION = [
     'WB', 'Willowbrook',
 ]
 
-# Models ------------------------------------------------------------ #
+# Constants for Category Model ----------------------- #
+CATEGORIES = [
+    'offers', 'Offers',
+    'requests', 'Requests',
+]
+
+# Constants for Subcategory Model -------------------- #
+SUBCATEGORIES = [
+    'carpool', 'Carpool',
+    'gardening', 'Gardening',
+    'kids', 'Kids',
+    'leisure', 'Leisure',
+    'pets', 'Pets',
+    'repairs', 'Repairs',
+    'tech', 'Tech',
+    'tools', 'Tools',
+    'other', 'Other',
+]
+
+# Models ------------------------------------------------------------ ##
+class Location(models.Model):
+    """
+    Stores location for user posts.
+    Related to :model:`Post`
+    """
+    location = models.CharField(max_length=50, choices=LOCATION)
+
+    def __str__(self):
+        return str(self.location)
+
+
+class Category(models.Model):
+    """
+    Stores main categories for user posts.
+    Related to :model:`Post`
+    """
+    category = models.CharField(max_length=8, choices=CATEGORIES)
+
+    def __str__(self):
+        return str(self.category)
+
+
+class Subcategory(models.Model):
+    """
+    Stores subcategories for user posts.
+    Related to :model:`Post`
+    """
+    subcategory = models.CharField(max_length=10, choices=SUBCATEGORIES)
+
+    def __str__(self):
+        return str(self.subcategory)
+
+
 class Post(models.Model):
     """
     Stores a user post entry.
@@ -125,14 +179,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment: {self.body} by {self.author}"
-
-
-class Location(models.Model):
-    """
-    Stores a user comment entry.
-    Related to :model:`Post`
-    """
-    location = models.CharField(max_length=50, choices=LOCATION)
-
-    def __str__(self):
-        return str(self.location)
