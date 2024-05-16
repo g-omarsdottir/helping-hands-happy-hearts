@@ -32,10 +32,10 @@ LOCATION = [
     'HH', 'Harvest Hollow',
     'MM', 'Marigold Mews',
     'OO', 'Old Oak End',
-    'PP', 'Primrose Path'
+    'PP', 'Primrose Path',
     'RR', 'Redleaf Rise',
     'SS', 'Shirebrook Springs',
-    'WW', 'Windrush Way'
+    'WW', 'Windrush Way',
     'WB', 'Willowbrook',
 ]
 
@@ -112,13 +112,15 @@ class Post(models.Model):
     edited_date = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     location = models.ForeignKey(
-        Location, related_name='location', null=True, blank=True, on_delete=models.SET_NULL
+        Location, related_name='post_location', null=True, blank=True, on_delete=models.SET_NULL
     )
     category = models.ForeignKey(
-        Category, related_name='category', null=False, blank=False, on_delete=models.CASCADE
+        Category, related_name='post_category', null=False, blank=False, on_delete=models.CASCADE
     )
     subcategory = models.ForeignKey(
-        Subcategory, related_name='subcategory', null=True, blank=True, on_delete=models.SET_NULL
+        Subcategory, related_name='post_subcategory',
+        null=True, blank=True,
+        on_delete=models.SET_NULL
     )
     post_image = CloudinaryField(
         'image', 
