@@ -76,3 +76,12 @@ class Post(models.Model):
     remarks = models.TextField(max_length=250, null=True, blank=True)
     target_date = models.DateField(null=True, blank=True)
     likes = models.ManyToManyField(User, related_name="user_post")
+
+    class Meta:
+        """
+        Orders the posts in chronolical order, newes first.
+        """
+        ordering = ["-published_date"]
+
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
