@@ -4,7 +4,7 @@ from autoslug import AutoSlugField
 from djrichtextfield.models import RichTextField
 from cloudinary.models import CloudinaryField
 
-# Constants for Post Model
+# Constants for Post Model ------------------------------------------ #
 STATUS = (
     (0, 'Draft'),
     (1, 'Published'),
@@ -22,11 +22,27 @@ TOOLS_REQUIRED = [
     ('n.a.', 'No Tools Required'),
 ]
 
-# Create your models here.
+# Constants for Location Model -------------------------------------- #
+LOCATION = [
+    'CC', 'Cobblestone Crossing',
+    'EE', 'Elderberry End',
+    'FF', 'Foxglove Field',
+    'HH', 'Harvest Hollow',
+    'MM', 'Marigold Mews',
+    'OO', 'Old Oak End',
+    'PP', 'Primrose Path'
+    'RR', 'Redleaf Rise',
+    'SS', 'Shirebrook Springs',
+    'WW', 'Windrush Way'
+    'WB', 'Willowbrook',
+]
+
+# Models ------------------------------------------------------------ #
 class Post(models.Model):
     """
-    A model to store and manage post entries.
+    Stores a user post entry.
     Related to :model:`auth.User`
+    and :model:`Comment`
     and :model:`Location`
     and :model:`Category`
     and :model:`Subcategory`.
@@ -60,13 +76,14 @@ class Post(models.Model):
         }
     )
     availability = models.CharField(
-        max_length=9,
+        max_length=20,
         choices=AVAILABILITY_CHOICES,
         null=True,
         blank=True,
         on_delete=models.SET_NULL
     )
     tools_required = models.CharField(
+        max_length=50,
         choices=TOOLS_REQUIRED,
         null=True,
         blank=True,
@@ -74,14 +91,48 @@ class Post(models.Model):
     )
     remarks = models.TextField(max_length=250, null=True, blank=True)
     target_date = models.DateField(null=True, blank=True)
-    likes = models.ManyToManyField(User, related_name='liked_post')
+    likes = models.ManyToManyField(User, related_name='liked_post', on_delete=models.CASCADE)
     bookmarks = models.ManyToManyField(User, related_name='bookmarked_post')
 
     class Meta:
         """
-        Orders the posts in chronolical order, newes first.
+        Orders the posts in chronological order, newes first.
         """
         ordering = ["-published_date"]
 
     def __str__(self):
         return f"{self.title} | posted by {self.author}"
+
+
+class Comment(models.Model):
+    """
+    Stores a user comment entry.
+    Related to :model:`auth.User`
+    and :model:`blog.Post`.
+    """
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name="commenter", on_delete=models.CASCADE)
+    body = models.TextField()
+    published_date = models.DateTimeField(auto_now=True)
+    edited_date = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='liked_comment')
+
+    class Meta:
+        """
+        Orders the comments in chronological order, newes first.
+        """
+        ordering = ["published_date"]
+
+    def __str__(self):
+        return f"Comment: {self.body} by {self.author}"
+
+
+class Location(models.Model):
+    """
+    Stores a user comment entry.
+    Related to :model:`Post`
+    """
+    location = models.CharField(max_length=50, choices=LOCATION)
+
+    def __str__(self):
+        return str(self.location)
