@@ -127,7 +127,8 @@ class Post(models.Model):
             'quality': 75,
             'fetch_format': 'webp',
             'folder': 'post-images'
-        }
+        },
+        required=False,
     )
     availability = models.CharField(
         max_length=20,
