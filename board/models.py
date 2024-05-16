@@ -129,18 +129,16 @@ class Post(models.Model):
         choices=AVAILABILITY_CHOICES,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL
     )
     tools_required = models.CharField(
         max_length=50,
         choices=TOOLS_REQUIRED,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL
     )
     remarks = models.TextField(max_length=250, null=True, blank=True)
     target_date = models.DateField(null=True, blank=True)
-    likes = models.ManyToManyField(User, related_name='liked_post', on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_post')
     bookmarks = models.ManyToManyField(User, related_name='bookmarked_post')
 
     class Meta:
