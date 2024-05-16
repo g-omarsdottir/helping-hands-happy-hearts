@@ -62,7 +62,6 @@ class Post(models.Model):
     availability = models.CharField(
         max_length=9,
         choices=AVAILABILITY_CHOICES,
-        on_delete=models.SET_NULL,
         null=True,
         blank=True,
         on_delete=models.SET_NULL
