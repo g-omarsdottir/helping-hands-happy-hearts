@@ -1,13 +1,15 @@
 from django.forms import ModelForm
+from cloudinary.forms import CloudinaryFileField
 from .models import Post
 
+# Check: Code from Cloudinary tutorial, implements a form on website. Check later if needed.
 class PhotoForm(ModelForm):
     """
     Defines the form field for the image upload field.
-    Specifies the formal handle file upload and utilizes Cloudinary for storage. 
+    Specifies the formal handle file upload and utilizes Cloudinary for storage.
     Related to :model:`Post`
     """
-    image = CloudinaryFileField()
+    image = CloudinaryFileField(required=False)
 
     class Meta:
         model = Post

@@ -38,13 +38,12 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'http://localhost', 
     'http://127.0.0.1',
-    '8000-gomarsdotti-helpinghand-fmgv7z9vyb8.ws-eu111.gitpod.io',
-    '8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
+    '8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net',
+    'https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net',
 ]
 
 CSRF_TRUSTED_ORIGINS =[
-    'https://8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
-    'http://8000-gomarsdotti-helpinghand-vpxqbs6y6oz.ws-eu111.gitpod.io',
+    'https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net',
 ]
 
 # Application definition
