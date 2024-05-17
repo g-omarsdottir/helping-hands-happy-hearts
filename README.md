@@ -175,3 +175,4 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 ## Credits
 
 - [Cloudinary](https://github.com/cloudinary-devs/my-django-app/blob/main/django_app/forms.py) - Code from Cloudinary [tutorial](https://cloudinary.com/documentation/django_helper_methods_tutorial) to allow users to upload images.
+- [Django docs get_FOO_display()](https://docs.djangoproject.com/en/5.0/ref/models/instances/) - Return "human-readable" value of model fields.
