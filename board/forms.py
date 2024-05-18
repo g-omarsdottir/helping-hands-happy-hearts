@@ -25,6 +25,22 @@ class PostForm(forms.ModelForm):
         widgets = {
             'excerpt': forms.RichTextWidget(),
             'content': forms.RichTextWidget(),
+            'remarks': forms.Textarea(attrs={'rows': 5}),
+        }
+
+        labels = {
+            'title': 'Post Title',
+            'excerpt': 'Short Description',
+            'content': 'Your Post Content',
+            'status': 'Save as Draft or Publish Now',
+            'location': 'Location',
+            'category': 'Offer or Request',
+            'subcategory': 'Subcategory',
+            'post_image': 'Add Image',
+            'availability': 'Availability',
+            'tools_required': 'Tools Required',
+            'remarks': 'Remarks',
+            'target_date': 'Target Date',
         }
 
 

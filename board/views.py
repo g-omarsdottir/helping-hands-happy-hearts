@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.views.generic import CreateView
 from .models import Post
+from .forms import PostForm, PhotoForm # check: PhotoForm
 
 # Create your views here.
 class BoardView(generic.TemplateView):
@@ -23,13 +24,13 @@ class AddPost(CreateView):
     """
     template_name = 'board/add_post.html'
     model = Post
+    form_class = PostForm
     success_url ='/post/'
 
     def form_valid(self, form):
         """
-        Defines the username posting the post
-        Prevents user being able to choose other usernames as author
+        Defines the author of the post.
+        Prevents user being able to choose other usernames as author.
         """
-        def form_valid(self, form):
-            form.instance.user = self.request.user
-            return super(AddPost, self).form_valid(form)
+        form.instance.user = self.request.user
+        return super(AddPost, self).form_valid(form)
