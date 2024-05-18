@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic import CreateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse, reverse_lazy
 from .models import Post
 from .forms import PostForm, PhotoForm # check: PhotoForm
 
@@ -26,6 +28,12 @@ class AddPost(CreateView):
     model = Post
     form_class = PostForm
     success_url ='/post/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['login_url'] = reverse_lazy('login')
+        context['signup_url'] = reverse_lazy('signup')
+        return context
 
     def form_valid(self, form):
         """

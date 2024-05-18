@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from django import forms
-from djrichtextfield.widgets import RichTextWidget
+#from djrichtextfield.widgets import RichTextWidget
+from ckeditor.fields import RichTextField
 from cloudinary.forms import CloudinaryFileField
 from .models import Post
 
@@ -9,7 +10,7 @@ class PostForm(forms.ModelForm):
     """
     Form to create a post
     """
-
+    content = RichTextField()
     class Meta:
         """
         Defines the form fields
@@ -23,8 +24,7 @@ class PostForm(forms.ModelForm):
         # excerpt = forms.CharField(widget=RichTextWidget())
         # content = forms.CharField(widget=RichTextWidget())
         widgets = {
-            'excerpt': forms.RichTextWidget(),
-            'content': forms.RichTextWidget(),
+            'excerpt': forms.Textarea(attrs={'rows': 5}),
             'remarks': forms.Textarea(attrs={'rows': 5}),
         }
 

@@ -3,5 +3,9 @@
 {% block content %}
 {% csrf_token %}
 <h1>Offers & Requests</h1>
-<h2>Pin your Offers & Requests on the Board</h2>
+<h2>Click here to <a href="{% url 'add_post' %}" aria-label="navigates to form to add content">Pin Your Own Offers & Requests on the Board</a></h2>
+
+
+
+
 {% endblock %}
