@@ -3,46 +3,32 @@
 
 {% block title %}Add Offers & Requests{% endblock %}
 
-{% block content %}
-<div class="container">
-    <form method="POST" enctype="multipart/form-data" class="p-2 form">
-        <h1 class="text-center">Add Offers & Requests</h1>
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form }}
-    </form>
-</div>
-
 <div class="container">
     <div class="text-center">
         <p>
-            {% blocktranslate %}To pin your Requests and Offers to the board, please <a href="{{ login_url }}">sign in</a> or <a href="{{ signup_url }}">sign up</a> first.{% endblocktranslate %}
+            {% blocktranslate %}
+            To pin your Requests and Offers to the board, please 
+            <a href="{{ login_url }}">sign in</a> or 
+            <a href="{{ signup_url }}">sign up</a> first.
+            {% endblocktranslate %}
         </p>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            {% url 'add_post' as add_post_url %}
-            <div class="col-xs-12 col-sm-10 col-xl-8 form p-2">
-                {% element form form=form method="post" action=add_post_url enctype="multipart/form-data" tags="#" %}
-                    {% slot body %}
-                        {% csrf_token %}
-                        {% element fields form=form unlabeled=True %}
-                        {{ form.media }}
-                        {{ form|crispy }}
-                        {% endelement %}
-                        {{ redirect_field }}
-                        {% endslot %}
-                        {% slot actions %}
-                        {% element button type="submit" tags="prominent" class="btn btn-primary mt-2" %}
-                            {% trans "Pin to Board" %}
-                        {% endelement %}
-                    {% endslot %}
-                {% endelement %}
-            </div>
-        </div>
     </div>
 </div>
 
-
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-xl-8 form p-2">
+            <form method="POST" enctype="multipart/form-data" class="p-2 form">
+                <h1 class="text-center">Add Offers & Requests</h1>
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form|crispy }}
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary p-2">Create Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
