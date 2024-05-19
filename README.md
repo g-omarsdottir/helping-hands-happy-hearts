@@ -159,6 +159,8 @@ Each Django model is represented with a table on the ERD along with its attribut
 
 ### Programs Used
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
+[Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) to convert images into webp format
+[Optimizilla](https://imagecompressor.com/) to compress image file size
 
 ## Features
 *Testing and Bugs (separate)*

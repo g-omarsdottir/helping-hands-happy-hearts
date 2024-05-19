@@ -19,7 +19,7 @@
     /* Box shadow and border styles */
     /*border: 2px groove #227C9D
     box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75)*/
-    --blue-box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75);
+    --blue-box-shadow: 1px -1px 7px 0 rgba(34, 124, 157, 0.75);
     --black-box-shadow: 1px -1px 7px 0 #4E4A47;
     --border: 1px solid #4E4A47;
 }
@@ -74,6 +74,43 @@ img.logo {
 }
 
 /* Main ---------------------------------------------------------------*/
+
+/* Board - Overview of Posts ------ */ 
+/* Check: Copy of Daisy's tutorial. Replace with bootstrap styles when content available. Except posts and pseudo-class */
+.card {
+    height: 90%;
+    margin-top: 1rem
+}
+
+/* Check: adjust or remove after adding cloudinary docs style */
+.scale {
+    width: 100%;
+    height: auto;
+}
+
+.posts a {
+    text-decoration: none;
+}
+
+.posts {
+    color: var(--black);
+    box-shadow: var(--black-box-shadow);
+}
+
+.posts:hover {
+    cursor: pointer;
+    box-shadow: var(--blue-box-shadow);
+}
+
+/* Box shadow for 3D "pressed effect" */
+/* 
+Explanation of values: 
+distance of shadow from element - blur/spread of shadow - no additional spread - color. 
+Same for definition of second shadow.
+*/
+.posts:active {
+    box-shadow: 0.1em 0.1em 0 var(--warm-white), 0.2em 0.2em var(--blue);
+}
 
 /* Forms Django allauth ----------- */
 .form {
