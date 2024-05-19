@@ -4,6 +4,6 @@ from .views import AddPost
 
 
 urlpatterns = [
-    path('', AddPost.as_view(), name='add_post'),
+    path('add/', AddPost.as_view(), name='add_post'),
     path('', views.BoardView.as_view(), name='board'),
 ]
