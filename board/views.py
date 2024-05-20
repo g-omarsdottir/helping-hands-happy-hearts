@@ -13,9 +13,7 @@ class Board(ListView):
     Context object name customized for readability.
     ***Template:***
     :template:`board/board.html`
-
     """
-
     template_name = "board/board.html"
     model = Post
     context_object_name = "board"
