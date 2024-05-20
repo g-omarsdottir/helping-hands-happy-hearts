@@ -12,12 +12,12 @@
 </div>
 <div class="container d-flex flex-row flex-wrap justify-content-center p-2 d-grid gap-3">
     {% for post in board %}
-    <a href="" aria-label="Click to view detailed {{post.title}}">
+    <a href="{% url "post_detail" post.id %}" aria-label="Click to view detailed {{post.title}}">
         <div class="card posts" style="width: 18rem;">
             {% if "placeholder" in post.featured_image.url %}
             <img src="{% static 'images/default.webp' %}" class="card-img-top" alt="placeholder post image of hands forming a heart">
             {% else %}
-            <img src="{{ post.post_image.url }}" class="scale" alt="image for post {{ post.title }}">
+            <img src="{{ post.post_image.url }}" class="card-img-top scale" alt="image for post {{ post.title }}">
             {% endif %}
             <div class="card-body">
               <h2 class="card-title">{{post.title}}</h2>

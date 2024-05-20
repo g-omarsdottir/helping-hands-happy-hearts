@@ -28,7 +28,6 @@ class PostDetail(DetailView):
     ***Template:***
     :template:`board/post_detail.html`
     """
-
     template_name = "board/post_detail.html"
     model = Post
     context_object_name = "post"

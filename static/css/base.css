@@ -77,11 +77,6 @@ img.logo {
 
 /* Board - Overview of Posts ------ */ 
 /* Check: Copy of Daisy's tutorial. Replace with bootstrap styles when content available. Except posts and pseudo-class */
-.card {
-    height: 450px;
-    overflow: hidden;
-}
-
 .scale {
     width: 100%;
     height: 200px;
@@ -94,6 +89,8 @@ img.logo {
 }
 
 .posts {
+    height: 450px;
+    overflow: hidden;
     color: var(--black);
     box-shadow: var(--black-box-shadow);
 }

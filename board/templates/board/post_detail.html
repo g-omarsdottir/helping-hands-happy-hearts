@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}Post Detail - {{post.title}}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4 mt-3">
+                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <div class="img-container">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img src="{% static 'images/default.webp' %}" alt="placeholder post image of hands forming a heart"
+                            class="img-fluid">
+                        {% else %}
+                        <img src="{{ post.post_image.url }}" alt="image for post {{ post.title }}" class="img-fluid">
+                        {% endif %}
+                    </div>
+                    <h1 class="text-center">{{ post.title }}</h1>
+                    <!-- Check: author defined in PostModel, delete if double. Check: edited_date -->
+                    <p class="text-center">Posted by {{ post.author }} on {{ post.published_date }}</p>
+                    <hr>
+                    <article class="card-text">
+                        <h2><strong>Category: </strong>{{ post.category }}</h2>
+                        <p>
+                            {% if post.subcategory %}
+                            <strong>Subcategory: </strong>{{ post.subcategory }}
+                            {% else %}
+                            <strong>Subcategory: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        </p>
+                        <p><strong>Post Content: </strong> {{ post.content | safe}}</p>
+                        <p>
+                            {% if post.location %}
+                            <strong>Location: </strong>{{ post.location }}</p>
+                            {% else %}
+                            <strong>Location: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        
+                        <p>
+                            {% if post.availability %}
+                            <strong>Availability: </strong>{{ post.availability }}
+                            {% else %}
+                            <strong>Availability: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if post.tools_required %}
+                            <strong>Tools Required: </strong>{{ post.tools_required }}
+                            {% else %}
+                            <strong>Tools Required: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if post.remarks %}
+                            <strong>Remarks: </strong>{{ post.remarks }}
+                            {% else %}
+                            <strong>Remarks: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        </p>
+                        <p>
+                            {% if post.target_date %}
+                            <strong>Target Date: </strong>{{ post.target_date }}
+                            {% else %}
+                            <strong>Target Date: </strong><!-- Leaves field empty if no content -->
+                            {% endif %}
+                        </p>
+                    </article>
+                    {% if request.user == post.user %}
+                    <div class="text-center">
+                        <a href="#" class="btn btn-warning w-25">Edit</a>
+                        <a href="#" class="btn btn-danger w-25">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
