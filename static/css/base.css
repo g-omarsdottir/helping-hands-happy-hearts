@@ -78,14 +78,15 @@ img.logo {
 /* Board - Overview of Posts ------ */ 
 /* Check: Copy of Daisy's tutorial. Replace with bootstrap styles when content available. Except posts and pseudo-class */
 .card {
-    height: 90%;
-    margin-top: 1rem
+    height: 450px;
+    overflow: hidden;
 }
 
-/* Check: adjust or remove after adding cloudinary docs style */
 .scale {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .posts a {

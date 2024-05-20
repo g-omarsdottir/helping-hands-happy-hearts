@@ -3,7 +3,7 @@ from django.views import generic
 from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
-from .forms import PostForm, PhotoForm # check: PhotoForm
+from .forms import PostForm
 
 # Create your views here.
 class Board(ListView):

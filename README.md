@@ -149,7 +149,9 @@ Each Django model is represented with a table on the ERD along with its attribut
 [Django allauth](https://docs.allauth.org/en/latest/installation/index.html) - User account authentication and verification *(check: verif.)*
 [Django Crispy Forms v2.1](https://django-crispy-forms.readthedocs.io/en/latest/install.html#installing-django-crispy-forms) - Simplifies the creation of forms
 [Django ckeditor v6.7.1](https://pypi.org/project/django-ckeditor/) - Privides a handy richt text field widget for forms
-[Django RichTextField](https://djangopackages.org/packages/p/django-richtextfield/) - Renders a customizable rich text editor for user posts
+[Django RichTextField v1.6.2](https://djangopackages.org/packages/p/django-richtextfield/) - Renders a customizable rich text editor for user posts
+[Django Resized v1.0.2](https://pypi.org/project/django-resized/) - Handles resizing and format converting of images uploaded by users
+[Pillow v10.3.0](https://pillow.readthedocs.io/en/stable/) - A Python imaging library, handles images in combination with the Django Resized Image Field
 [Bootstrap v5.2.3](https://getbootstrap.com/docs/5.2/getting-started/download/) - Open-source CSS framework
 [Crispy-Bootstrap v5 2024.2](https://pypi.org/project/crispy-bootstrap5/) - Provides Bootstrap-specific classes and styles to render forms
 [Summernote v0.8.20.0](https://djangopackages.org/packages/p/django-summernote/) - Renders a customizable rich text editor for the admin panel

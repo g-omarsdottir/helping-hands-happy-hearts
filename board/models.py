@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from autoslug import AutoSlugField
 from djrichtextfield.models import RichTextField
-from cloudinary.models import CloudinaryField
+from django_resized import ResizedImageField
+
 
 # Constants for Post Model --------------------------- #
 STATUS = (
@@ -106,41 +107,28 @@ class Post(models.Model):
     edited_date = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     location = models.ForeignKey(
-        Location,
-        related_name='post_location',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL
+        Location, related_name='post_location',
+        null=True, blank=True, on_delete=models.SET_NULL
     )
     category = models.ForeignKey(
-        Category,
-        related_name='post_category',
-        null=False,
-        blank=False,
-        on_delete=models.CASCADE
+        Category, related_name='post_category',
+        null=False, blank=False, on_delete=models.CASCADE
     )
     subcategory = models.ForeignKey(
-        Subcategory,
-        related_name='post_subcategory',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL
+        Subcategory, related_name='post_subcategory',
+        null=True, blank=True, on_delete=models.SET_NULL
     )
-    post_image = CloudinaryField(
-        'image', null=True, blank=True,
-        transformation=[{'width': 400, 'crop': 'scale'}],
+    post_image = ResizedImageField(
+        size=[400, None], upload_to="happyhelping/", null=True, blank=True, 
+        quality= 75, force_format='webp',
     )
     availability = models.CharField(
-        max_length=20,
-        choices=AVAILABILITY_CHOICES,
-        null=True,
-        blank=True,
+        max_length=20, choices=AVAILABILITY_CHOICES,
+        null=True, blank=True,
     )
     tools_required = models.CharField(
-        max_length=50,
-        choices=TOOLS_REQUIRED,
-        null=True,
-        blank=True,
+        max_length=50, choices=TOOLS_REQUIRED,
+        null=True, blank=True
     )
     remarks = models.TextField(max_length=250, null=True, blank=True)
     target_date = models.DateField(null=True, blank=True)

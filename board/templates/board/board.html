@@ -15,9 +15,9 @@
     <a href="" aria-label="Click to view detailed {{post.title}}">
         <div class="card posts" style="width: 18rem;">
             {% if "placeholder" in post.featured_image.url %}
-            <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="placeholder post image of hands forming a heart">
+            <img src="{% static 'images/default.webp' %}" class="card-img-top" alt="placeholder post image of hands forming a heart">
             {% else %}
-            <img src="{{ post.post_image.url }}" class="scale" alt="{{ post.title }}">
+            <img src="{{ post.post_image.url }}" class="scale" alt="image for post {{ post.title }}">
             {% endif %}
             <div class="card-body">
               <h2 class="card-title">{{post.title}}</h2>
