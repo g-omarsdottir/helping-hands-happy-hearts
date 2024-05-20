@@ -75,8 +75,7 @@ img.logo {
 
 /* Main ---------------------------------------------------------------*/
 
-/* Board - Overview of Posts ------ */ 
-/* Check: Copy of Daisy's tutorial. Replace with bootstrap styles when content available. Except posts and pseudo-class */
+/* Board - Overview of Posts --------------- */ 
 .scale {
     width: 100%;
     height: 200px;
@@ -84,15 +83,15 @@ img.logo {
     object-position: center;
 }
 
-.posts a {
-    text-decoration: none;
-}
-
 .posts {
     height: 450px;
     overflow: hidden;
     color: var(--black);
     box-shadow: var(--black-box-shadow);
+}
+
+.posts a {
+    text-decoration: none;
 }
 
 .posts:hover {
@@ -110,7 +109,12 @@ Same for definition of second shadow.
     box-shadow: 0.1em 0.1em 0 var(--warm-white), 0.2em 0.2em var(--blue);
 }
 
-/* Forms Django allauth ----------- */
+/* Board - Detailed View of Posts ---------- */
+.box {
+    box-shadow: var(--blue-box-shadow);
+}
+
+/* Forms Django allauth -------------------- */
 .form {
     /*width: 100%;*/
     margin: 20px auto;
