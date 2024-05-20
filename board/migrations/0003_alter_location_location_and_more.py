@@ -6,18 +6,47 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('board', '0002_alter_comment_likes_alter_location_location_and_more'),
+        ("board", "0002_alter_comment_likes_alter_location_location_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='location',
-            name='location',
-            field=models.CharField(choices=[('AA', 'Arkenstone Avenue'), ('BB', 'Buckleberry Bend'), ('CC', 'Cobblestone Crossing'), ('EE', 'Elderberry End'), ('FF', 'Foxglove Field'), ('HH', 'Harvest Hollow'), ('MM', 'Marigold Mews'), ('OO', 'Old Oak End'), ('PP', 'Primrose Path'), ('RR', 'Redleaf Rise'), ('SS', 'Shirebrook Springs'), ('WW', 'Windrush Way')], max_length=50),
+            model_name="location",
+            name="location",
+            field=models.CharField(
+                choices=[
+                    ("AA", "Arkenstone Avenue"),
+                    ("BB", "Buckleberry Bend"),
+                    ("CC", "Cobblestone Crossing"),
+                    ("EE", "Elderberry End"),
+                    ("FF", "Foxglove Field"),
+                    ("HH", "Harvest Hollow"),
+                    ("MM", "Marigold Mews"),
+                    ("OO", "Old Oak End"),
+                    ("PP", "Primrose Path"),
+                    ("RR", "Redleaf Rise"),
+                    ("SS", "Shirebrook Springs"),
+                    ("WW", "Windrush Way"),
+                ],
+                max_length=50,
+            ),
         ),
         migrations.AlterField(
-            model_name='subcategory',
-            name='subcategory',
-            field=models.CharField(choices=[('borrow', 'Borrow'), ('carpool', 'Carpool'), ('gardening', 'Gardening'), ('kids', 'Kids'), ('leisure', 'Leisure'), ('pets', 'Pets'), ('repairs', 'Repairs'), ('tech', 'Tech'), ('other', 'Other')], max_length=10),
+            model_name="subcategory",
+            name="subcategory",
+            field=models.CharField(
+                choices=[
+                    ("borrow", "Borrow"),
+                    ("carpool", "Carpool"),
+                    ("gardening", "Gardening"),
+                    ("kids", "Kids"),
+                    ("leisure", "Leisure"),
+                    ("pets", "Pets"),
+                    ("repairs", "Repairs"),
+                    ("tech", "Tech"),
+                    ("other", "Other"),
+                ],
+                max_length=10,
+            ),
         ),
     ]

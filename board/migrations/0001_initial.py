@@ -18,66 +18,250 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('category', models.CharField(choices=[('offers', 'Offers'), ('requests', 'Requests')], max_length=8)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "category",
+                    models.CharField(
+                        choices=[("offers", "Offers"), ("requests", "Requests")],
+                        max_length=8,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Location',
+            name="Location",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('location', models.CharField(choices=[('AA', 'Arkenstone Avenue'), ('BB', 'Buckleberry Bend'), ('CC', 'Cobblestone Crossing'), ('EE', 'Elderberry End'), ('FF', 'Foxglove Field'), ('HH', 'Harvest Hollow'), ('MM', 'Marigold Mews'), ('OO', 'Old Oak End'), ('PP', 'Primrose Path'), ('RR', 'Redleaf Rise'), ('SS', 'Shirebrook Springs'), ('WW', 'Windrush Way')], max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "location",
+                    models.CharField(
+                        choices=[
+                            ("AA", "Arkenstone Avenue"),
+                            ("BB", "Buckleberry Bend"),
+                            ("CC", "Cobblestone Crossing"),
+                            ("EE", "Elderberry End"),
+                            ("FF", "Foxglove Field"),
+                            ("HH", "Harvest Hollow"),
+                            ("MM", "Marigold Mews"),
+                            ("OO", "Old Oak End"),
+                            ("PP", "Primrose Path"),
+                            ("RR", "Redleaf Rise"),
+                            ("SS", "Shirebrook Springs"),
+                            ("WW", "Windrush Way"),
+                        ],
+                        max_length=50,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Subcategory',
+            name="Subcategory",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subcategory', models.CharField(choices=[('borrow', 'Borrow'), ('carpool', 'Carpool'), ('gardening', 'Gardening'), ('kids', 'Kids'), ('leisure', 'Leisure'), ('pets', 'Pets'), ('repairs', 'Repairs'), ('tech', 'Tech'), ('other', 'Other')], max_length=10)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "subcategory",
+                    models.CharField(
+                        choices=[
+                            ("borrow", "Borrow"),
+                            ("carpool", "Carpool"),
+                            ("gardening", "Gardening"),
+                            ("kids", "Kids"),
+                            ("leisure", "Leisure"),
+                            ("pets", "Pets"),
+                            ("repairs", "Repairs"),
+                            ("tech", "Tech"),
+                            ("other", "Other"),
+                        ],
+                        max_length=10,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=60)),
-                ('slug', autoslug.fields.AutoSlugField(always_update=True, editable=False, populate_from='title', unique=True)),
-                ('excerpt', models.CharField(max_length=500)),
-                ('content', djrichtextfield.models.RichTextField(max_length=5000)),
-                ('published_date', models.DateTimeField(auto_now_add=True)),
-                ('edited_date', models.DateTimeField(auto_now=True)),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=0)),
-                ('post_image', cloudinary.models.CloudinaryField(max_length=255, verbose_name='image')),
-                ('availability', models.CharField(blank=True, choices=[('evenings', 'Evenings'), ('weekends', 'Weekends'), ('generally', 'Generally Available')], max_length=20, null=True)),
-                ('tools_required', models.CharField(blank=True, choices=[('have', 'I Have the Necessary Tools'), ('need', 'Tools Required - which I Do Not Have'), ('n.a.', 'No Tools Required')], max_length=50, null=True)),
-                ('remarks', models.TextField(blank=True, max_length=250, null=True)),
-                ('target_date', models.DateField(blank=True, null=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='post_owner', to=settings.AUTH_USER_MODEL)),
-                ('bookmarks', models.ManyToManyField(related_name='bookmarked_post', to=settings.AUTH_USER_MODEL)),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='post_category', to='board.category')),
-                ('likes', models.ManyToManyField(related_name='liked_post', to=settings.AUTH_USER_MODEL)),
-                ('location', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='post_location', to='board.location')),
-                ('subcategory', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='post_subcategory', to='board.subcategory')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=60)),
+                (
+                    "slug",
+                    autoslug.fields.AutoSlugField(
+                        always_update=True,
+                        editable=False,
+                        populate_from="title",
+                        unique=True,
+                    ),
+                ),
+                ("excerpt", models.CharField(max_length=500)),
+                ("content", djrichtextfield.models.RichTextField(max_length=5000)),
+                ("published_date", models.DateTimeField(auto_now_add=True)),
+                ("edited_date", models.DateTimeField(auto_now=True)),
+                (
+                    "status",
+                    models.IntegerField(
+                        choices=[(0, "Draft"), (1, "Published")], default=0
+                    ),
+                ),
+                (
+                    "post_image",
+                    cloudinary.models.CloudinaryField(
+                        max_length=255, verbose_name="image"
+                    ),
+                ),
+                (
+                    "availability",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("evenings", "Evenings"),
+                            ("weekends", "Weekends"),
+                            ("generally", "Generally Available"),
+                        ],
+                        max_length=20,
+                        null=True,
+                    ),
+                ),
+                (
+                    "tools_required",
+                    models.CharField(
+                        blank=True,
+                        choices=[
+                            ("have", "I Have the Necessary Tools"),
+                            ("need", "Tools Required - which I Do Not Have"),
+                            ("n.a.", "No Tools Required"),
+                        ],
+                        max_length=50,
+                        null=True,
+                    ),
+                ),
+                ("remarks", models.TextField(blank=True, max_length=250, null=True)),
+                ("target_date", models.DateField(blank=True, null=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="post_owner",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "bookmarks",
+                    models.ManyToManyField(
+                        related_name="bookmarked_post", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="post_category",
+                        to="board.category",
+                    ),
+                ),
+                (
+                    "likes",
+                    models.ManyToManyField(
+                        related_name="liked_post", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "location",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="post_location",
+                        to="board.location",
+                    ),
+                ),
+                (
+                    "subcategory",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="post_subcategory",
+                        to="board.subcategory",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-published_date'],
+                "ordering": ["-published_date"],
             },
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('body', models.TextField()),
-                ('published_date', models.DateTimeField(auto_now=True)),
-                ('edited_date', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='commenter', to=settings.AUTH_USER_MODEL)),
-                ('likes', models.ManyToManyField(related_name='liked_comment', to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='board.post')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("body", models.TextField()),
+                ("published_date", models.DateTimeField(auto_now=True)),
+                ("edited_date", models.DateTimeField(auto_now=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="commenter",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "likes",
+                    models.ManyToManyField(
+                        related_name="liked_comment", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="comments",
+                        to="board.post",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['published_date'],
+                "ordering": ["published_date"],
             },
         ),
     ]

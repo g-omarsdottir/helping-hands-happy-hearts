@@ -9,38 +9,75 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('board', '0001_initial'),
+        ("board", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='comment',
-            name='likes',
-            field=models.ManyToManyField(blank=True, related_name='liked_comment', to=settings.AUTH_USER_MODEL),
+            model_name="comment",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, related_name="liked_comment", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AlterField(
-            model_name='location',
-            name='location',
-            field=models.CharField(choices=[('FF', 'Foxglove Field'), ('EE', 'Elderberry End'), ('MM', 'Marigold Mews'), ('PP', 'Primrose Path'), ('WW', 'Windrush Way'), ('BB', 'Buckleberry Bend'), ('AA', 'Arkenstone Avenue'), ('RR', 'Redleaf Rise'), ('OO', 'Old Oak End'), ('SS', 'Shirebrook Springs'), ('HH', 'Harvest Hollow'), ('CC', 'Cobblestone Crossing')], max_length=50),
+            model_name="location",
+            name="location",
+            field=models.CharField(
+                choices=[
+                    ("FF", "Foxglove Field"),
+                    ("EE", "Elderberry End"),
+                    ("MM", "Marigold Mews"),
+                    ("PP", "Primrose Path"),
+                    ("WW", "Windrush Way"),
+                    ("BB", "Buckleberry Bend"),
+                    ("AA", "Arkenstone Avenue"),
+                    ("RR", "Redleaf Rise"),
+                    ("OO", "Old Oak End"),
+                    ("SS", "Shirebrook Springs"),
+                    ("HH", "Harvest Hollow"),
+                    ("CC", "Cobblestone Crossing"),
+                ],
+                max_length=50,
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='bookmarks',
-            field=models.ManyToManyField(blank=True, related_name='bookmarked_post', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="bookmarks",
+            field=models.ManyToManyField(
+                blank=True, related_name="bookmarked_post", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='likes',
-            field=models.ManyToManyField(blank=True, related_name='liked_post', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, related_name="liked_post", to=settings.AUTH_USER_MODEL
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='post_image',
-            field=cloudinary.models.CloudinaryField(blank=True, max_length=255, null=True, verbose_name='image'),
+            model_name="post",
+            name="post_image",
+            field=cloudinary.models.CloudinaryField(
+                blank=True, max_length=255, null=True, verbose_name="image"
+            ),
         ),
         migrations.AlterField(
-            model_name='subcategory',
-            name='subcategory',
-            field=models.CharField(choices=[('other', 'Other'), ('gardening', 'Gardening'), ('tech', 'Tech'), ('kids', 'Kids'), ('leisure', 'Leisure'), ('pets', 'Pets'), ('borrow', 'Borrow'), ('carpool', 'Carpool'), ('repairs', 'Repairs')], max_length=10),
+            model_name="subcategory",
+            name="subcategory",
+            field=models.CharField(
+                choices=[
+                    ("other", "Other"),
+                    ("gardening", "Gardening"),
+                    ("tech", "Tech"),
+                    ("kids", "Kids"),
+                    ("leisure", "Leisure"),
+                    ("pets", "Pets"),
+                    ("borrow", "Borrow"),
+                    ("carpool", "Carpool"),
+                    ("repairs", "Repairs"),
+                ],
+                max_length=10,
+            ),
         ),
     ]

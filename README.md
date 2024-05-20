@@ -158,6 +158,7 @@ Each Django model is represented with a table on the ERD along with its attribut
 [Autoslug](https://django-autoslug.readthedocs.io/_/downloads/en/stable/pdf/) - Automatically generates slug field for improved UX for less experienced users
 [cloudinary v1.36.0](https://cloudinary.com/documentation/django_integration) - Allows users to upload images
 [dj3-cloudinary-storage v0.0.6](https://cloudinary.com/documentation/rails_activestorage) - Provides storage of images uploaded by users
+[Black v24.4.2](https://black.readthedocs.io/en/stable/) - Formats code compliant to pep8 
 
 ### Programs Used
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD

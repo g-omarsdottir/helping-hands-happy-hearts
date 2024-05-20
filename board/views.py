@@ -1,22 +1,37 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from .forms import PostForm
 
+
 # Create your views here.
 class Board(ListView):
     """
-    Display content Offers & Requests
+    Display overview of posts on Offers & Requests.
     Context object name customized for readability.
     ***Template:***
     :template:`board/board.html`
 
     """
-    template_name = 'board/board.html'
+
+    template_name = "board/board.html"
     model = Post
-    context_object_name = 'board'
+    context_object_name = "board"
+
+
+class PostDetail(DetailView):
+    """
+    Display detailed view of posts on Offers & Requests.
+    Context object name customized for readability.
+    ***Template:***
+    :template:`board/post_detail.html`
+    """
+
+    template_name = "board/post_detail.html"
+    model = Post
+    context_object_name = "post"
 
 
 class AddPost(LoginRequiredMixin, CreateView):
@@ -28,10 +43,11 @@ class AddPost(LoginRequiredMixin, CreateView):
     ***Template:***
     :template:`board/add_post.html`
     """
-    template_name = 'board/add_post.html'
+
+    template_name = "board/add_post.html"
     model = Post
     form_class = PostForm
-    success_url ='/post/'
+    success_url = "/post/"
 
     def form_valid(self, form):
         """
