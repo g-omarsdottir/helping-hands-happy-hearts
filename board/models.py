@@ -118,21 +118,21 @@ class Post(models.Model):
         related_name="post_location",
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.SET_NULL
     )
     category = models.ForeignKey(
         Category,
         related_name="post_category",
         null=False,
         blank=False,
-        on_delete=models.CASCADE,
+        on_delete=models.CASCADE
     )
     subcategory = models.ForeignKey(
         Subcategory,
         related_name="post_subcategory",
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.SET_NULL
     )
     post_image = ResizedImageField(
         size=[400, None],
@@ -140,13 +140,13 @@ class Post(models.Model):
         null=True,
         blank=True,
         quality=75,
-        force_format="webp",
+        force_format="webp"
     )
     availability = models.CharField(
         max_length=20,
         choices=AVAILABILITY_CHOICES,
         null=True,
-        blank=True,
+        blank=True
     )
     tools_required = models.CharField(
         max_length=50, choices=TOOLS_REQUIRED, null=True, blank=True

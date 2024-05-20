@@ -61,6 +61,16 @@ class AddPost(LoginRequiredMixin, CreateView):
         """
         Defines the author of the post.
         Prevents user being able to choose other usernames as author.
+        Delay saving post to database: check if image was upoloaded,
+            else save post_image as None to database.
+            Check: Code from walkthrough project codestar, not working properly.
+            Check: (AddPost, self) removed from super() according to Python 3.
         """
         form.instance.user = self.request.user
-        return super(AddPost, self).form_valid(form)
+        post = form.save(commit=False)
+        if self.request.FILES.get("post_image"):
+            post.post_image = self.request.FILES["post_image"]
+        else:
+            post.post_image = None
+        post.save()
+        return super().form_valid(form)
