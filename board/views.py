@@ -9,11 +9,16 @@ from .forms import PostForm
 # Create your views here.
 class Board(ListView):
     """
-    Display overview of posts on Offers & Requests.
+    Display overview of posts on board Offers & Requests.
+    **Context**
     Context object name customized for readability.
+    
+    ``queryset``
+        All published instances of :model:`bord.Post`
     ***Template:***
     :template:`board/board.html`
     """
+    queryset = Post.objects.filter(status=1)
     template_name = "board/board.html"
     model = Post
     context_object_name = "board"
@@ -22,10 +27,16 @@ class Board(ListView):
 class PostDetail(DetailView):
     """
     Display detailed view of posts on Offers & Requests.
+    **Context**
     Context object name customized for readability.
+    ``post``
+        An instance of :model:`board.Post`.
+    ``queryset``
+        All published instances of :model:`bord.Post`
     ***Template:***
     :template:`board/post_detail.html`
     """
+    queryset = Post.objects.filter(status=1)
     template_name = "board/post_detail.html"
     model = Post
     context_object_name = "post"
