@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic import CreateView, ListView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
 from .forms import PostForm
 
@@ -48,14 +48,16 @@ class AddPost(LoginRequiredMixin, CreateView):
     LoginRequiredMixin checks if user is logged in before running CreateView.
     If user is not logged in and attempts to add post, it redirects user to login page.
     CreateView handles form to add a post in the DOM.
+    **Context**
+    ``post``
+        An instance of :model:`board.Post`.
     ***Template:***
     :template:`board/add_post.html`
     """
-
     template_name = "board/add_post.html"
     model = Post
     form_class = PostForm
-    success_url = "/post/"
+    success_url = "/board/"
 
     def form_valid(self, form):
         """
@@ -74,3 +76,26 @@ class AddPost(LoginRequiredMixin, CreateView):
             post.post_image = None
         post.save()
         return super().form_valid(form)
+
+
+class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    Delete user's own content.
+    Utilizes Django's authentication system's mixins to secure deletion of only own content.
+    Template_name field is not required.
+    **Context**
+    ``post``
+        An instance of :model:`board.Post`.
+    ***Template:***
+    :template:`board/post_confirm_delete.html`
+    """
+    model = Post
+    success_url = "/board/"
+
+    def test_func(self):
+        """
+        Required for UserPassesTextMixin.
+        Returns True if user passes test: is content author.
+        Returns False if user is not content author and throws 403 error.
+        """
+        return self.request.user == self.get_object().author
