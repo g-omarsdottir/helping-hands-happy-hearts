@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import generic
-from django.views.generic import CreateView, ListView, DetailView, DeleteView
+from django.views.generic import (
+    CreateView, ListView, DetailView, DeleteView, UpdateView
+)
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Post
 from .forms import PostForm
@@ -76,6 +78,30 @@ class AddPost(LoginRequiredMixin, CreateView):
             post.post_image = None
         post.save()
         return super().form_valid(form)
+
+
+class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    Edit user's own content.
+    Utilizes Django's authentication system's mixins to secure edit of only own content.
+    **Context**
+    ``post``
+        An instance of :model:`board.Post`.
+    ***Template:***
+    :template:`board/edit_post.html`
+    """
+    template_name = "board/edit_post.html"
+    model = Post
+    form_class = PostForm
+    sucess_url = "/board/"
+
+    def test_func(self):
+        """
+        Required for UserPassesTextMixin.
+        Returns True if user passes test: is content author.
+        Returns False if user is not content author and throws 403 error.
+        """
+        return self.request.user == self.get_object().author
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import AddPost, Board, PostDetail, DeletePost
+from .views import AddPost, Board, PostDetail, DeletePost, EditPost
 
 
 urlpatterns = [
@@ -8,4 +8,5 @@ urlpatterns = [
     path("board/", views.Board.as_view(), name="board"),
     path("<slug:pk>/", PostDetail.as_view(), name="post_detail"),
     path("delete/<slug:pk>/", DeletePost.as_view(), name="delete_post"),
+    path("edit/<slug:pk>/", EditPost.as_view(), name="edit_post"),
 ]
