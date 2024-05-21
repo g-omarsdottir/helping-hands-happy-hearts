@@ -10,14 +10,17 @@
     </div>
     <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
         <div class="row">
-            <div class="d-flex justify-content-center col-xs-10 form p-2 m-4">
+            <div class="d-flex justify-content-center col-xs-10 col-s-8 form p-2 m-4">
                 <form action="post">
                     {% csrf_token %}
                     <p class="mt-4">Are you sure you want to delete the following post?</p>
                     <p><strong>{{ object.title }}</strong></p>
-                    <div class="d-flex justify-content-center m-5">
-                        <input type="submit" value="Confirm" class="btn btn-danger col-xs-3 col-s-4">
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                        <input type="submit" value="Confirm Deletion" class="btn btn-danger col-xs-8 col-s-6">
+                        <a href="{% url 'post_detail' post.id %}" class="btn btn-warning col-xs-8 col-s-6">No, Return to Post</a>
                     </div>
+
+                    <!--  <div class="d-flex justify-content-center m-5"><input type="submit" value="Confirm" class="btn btn-danger col-xs-3 col-s-4"></div> -->
                 </form>
             </div>
         </div>

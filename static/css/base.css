@@ -4,10 +4,6 @@
 
 /* Root variables for colors and fonts */
 :root {
-    /* Fonts */
-    --heading-font: font-family: "Montserrat", sans-serif;
-    --text-font: font-family: "Work Sans", sans-serif;
-
     /* Colors */
     --black: #333333;
     --off-white: #F5F5F5;
@@ -29,7 +25,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(---text-font);
+    font-family: "Work Sans", sans-serif;
     color: var(--black);
 }
 
@@ -43,7 +39,15 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--heading-font);
+    font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
 }
 
 main {
@@ -84,14 +88,11 @@ img.logo {
 }
 
 .posts {
-    height: 450px;
+    height: 500px;
     overflow: hidden;
     color: var(--black);
     box-shadow: var(--black-box-shadow);
-}
-
-.posts a {
-    text-decoration: none;
+    position: relative;
 }
 
 .posts:hover {
@@ -107,6 +108,12 @@ Same for definition of second shadow.
 */
 .posts:active {
     box-shadow: 0.1em 0.1em 0 var(--warm-white), 0.2em 0.2em var(--blue);
+}
+
+.instruction {
+    position: absolute;
+    bottom: 20px;
+    background-color: rgba(254, 249, 239, 0.7);
 }
 
 /* Board - Detailed View of Posts ---------- */
