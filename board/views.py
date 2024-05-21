@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.views import generic
 from django.views.generic import (
     CreateView, ListView, DetailView, DeleteView, UpdateView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import HttpResponseRedirect
 from .models import Post
 from .forms import PostForm
 
@@ -87,13 +88,15 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     **Context**
     ``post``
         An instance of :model:`board.Post`.
+    ``slug``
+        Assigning the slug to a variable for redirecting.
     ***Template:***
     :template:`board/edit_post.html`
     """
     template_name = "board/edit_post.html"
     model = Post
     form_class = PostForm
-    sucess_url = "/board/"
+    success_url = "/board/"
 
     def test_func(self):
         """
@@ -102,6 +105,19 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         Returns False if user is not content author and throws 403 error.
         """
         return self.request.user == self.get_object().author
+
+    def form_valid(self, form):
+        """
+        Saves changes in form after editing.
+        Redirects to post. 
+        """
+        response = super().form_valid(form)
+        slug = self.kwargs['slug']
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+    def get_context_data(self, **kwargs):
+            kwargs.update({'post': self.object})
+            return super(EditPost, self).get_context_data(**kwargs)
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):

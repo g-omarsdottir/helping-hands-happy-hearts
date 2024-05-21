@@ -73,8 +73,8 @@
                     </article>
                     {% if request.user == post.author %}
                     <div class="d-flex justify-content-center gap-2">
-                        <a href="{% url 'edit_post' post.id %}" class="btn btn-warning col-8">Edit</a>
-                        <a href="{% url 'delete_post' post.id %}" class="btn btn-danger col-8">Delete</a>
+                        <a href="{% url 'edit_post' post.slug %}" class="btn btn-warning col-8">Edit</a>
+                        <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger col-8">Delete</a>
                     </div>
                     {% endif %}
                 </div>
