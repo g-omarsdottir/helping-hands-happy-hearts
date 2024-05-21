@@ -88,8 +88,8 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     **Context**
     ``post``
         An instance of :model:`board.Post`.
-    ``slug``
-        Assigning the slug to a variable for redirecting.
+    #``slug``
+    #    Assigning the slug to a variable for redirecting.
     ***Template:***
     :template:`board/edit_post.html`
     """
@@ -109,15 +109,18 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         """
         Saves changes in form after editing.
-        Redirects to post. 
+        Redirects to board (like in codestar walkthrough project).
         """
         response = super().form_valid(form)
-        slug = self.kwargs['slug']
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        #slug = self.kwargs['slug']
+        return HttpResponseRedirect(reverse("board"))
 
     def get_context_data(self, **kwargs):
-            kwargs.update({'post': self.object})
-            return super(EditPost, self).get_context_data(**kwargs)
+        """
+        Updates post.
+        """
+        kwargs.update({'post': self.object})
+        return super(EditPost, self).get_context_data(**kwargs)
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -131,6 +134,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     ***Template:***
     :template:`board/post_confirm_delete.html`
     """
+    template_name = "board/post_confirm_delete.html"
     model = Post
     success_url = "/board/"
 
@@ -141,3 +145,9 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         Returns False if user is not content author and throws 403 error.
         """
         return self.request.user == self.get_object().author
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Calls superclass delete method.
+        """
+        response = super().delete(request, *args, **kwargs)
