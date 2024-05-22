@@ -6,6 +6,7 @@ from django.views.generic import (
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
@@ -84,7 +85,7 @@ class AddPost(LoginRequiredMixin, CreateView):
     template_name = "board/add_post.html"
     model = Post
     form_class = PostForm
-    success_url = "/board/"
+    success_url = reverse_lazy("board")
 
     def form_valid(self, form):
         """
@@ -93,7 +94,7 @@ class AddPost(LoginRequiredMixin, CreateView):
         Delay saving post to database: check if image was upoloaded,
             else save post_image as None to database.
         """
-        form.instance.user = self.request.user
+        form.instance.author = self.request.user
         post = form.save(commit=False)
         if self.request.FILES.get("post_image"):
             post.post_image = self.request.FILES["post_image"]
@@ -120,7 +121,6 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "board/edit_post.html"
     model = Post
     form_class = PostForm
-    success_url = "/board/"
 
     def test_func(self):
         """
@@ -137,7 +137,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         response = super().form_valid(form)
         messages.success(self.request, "You successfully updated your post!")
-        return HttpResponseRedirect(reverse("board"))
+        return response
 
     def get_context_data(self, **kwargs):
         """
@@ -145,6 +145,9 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         kwargs.update({'post': self.object})
         return super(EditPost, self).get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse('post_detail', kwargs={'slug': self.object.slug})
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -158,7 +161,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     template_name = "board/post_confirm_delete.html"
     model = Post
-    success_url = "/board/"
+    success_url = reverse_lazy("board")
 
     def test_func(self):
         """
@@ -167,15 +170,6 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         Returns False if user is not content author and throws 403 error.
         """
         return self.request.user == self.get_object().author
-
-    def form_valid(self, request, *args, **kwargs):
-            """
-            Handles the deletion logic.
-            Redirects to board after deleting (like in codestar walkthrough project).
-            """
-            response = super().delete(request, *args, **kwargs)
-            messages.success(self.request, "You successfully deleted your post!")
-            return HttpResponseRedirect(reverse("board"))
 
 
 class AddComment(LoginRequiredMixin, CreateView):
@@ -210,7 +204,7 @@ class AddComment(LoginRequiredMixin, CreateView):
         form.instance.post = get_object_or_404(Post, pk=self.kwargs['pk'])
         messages.success(self.request, 'Your comment has been posted!')
         return super().form_valid(form)
-        #return HttpResponseRedirect(reverse('post_detail', kwargs={'slug': form.instance.post.slug}))
+        
 
     def get_success_url(self):
         """
