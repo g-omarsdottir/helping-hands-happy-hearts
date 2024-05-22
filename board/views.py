@@ -4,6 +4,7 @@ from django.views.generic import (
     CreateView, ListView, DetailView, DeleteView, UpdateView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
@@ -12,10 +13,10 @@ from .forms import PostForm, CommentForm
 # Create your views here.
 class Board(ListView):
     """
-    Display overview of posts on board Offers & Requests.
+    Display overview of posts on board Offers & Requests
+    Related to :model:`board.Post`
     **Context**
-    Context object name customized for readability.
-    
+    Context object name customized for readability
     ``queryset``
         All published instances of :model:`bord.Post`
     ***Template:***
@@ -29,21 +30,15 @@ class Board(ListView):
 
 class PostDetail(DetailView):
     """
-    Display detailed view of posts on Offers & Requests.
+    Display detailed view of posts on Offers & Requests
     Related to :model:`board.Post`
-    and :model:`board.Comment`.
+    and :model:`board.Comment`
     **Context**
     Context object name customized for readability.
     ``post``
-        An instance of :model:`board.Post`.
+        An instance of :model:`board.Post`
     ``queryset``
         All published instances of :model:`bord.Post`
-    ``comments``
-        All comments related to the post.
-    ``comment_count``
-        A count of approved comments related to the post.
-    ``comment_form``
-        An instance of :form:`board.CommentForm`
     ***Template:***
     :template:`board/post_detail.html`
     """
@@ -51,46 +46,15 @@ class PostDetail(DetailView):
     template_name = "board/post_detail.html"
     model = Post
     context_object_name = "post"
-    
-    def form_valid(request, slug):
-        post = get_object_or_404(queryset, slug=slug)
-        comments = post.comments.all().order_by("-published_date")
-        comment_count = post.comments.count()
-
-        if request.method == "POST":
-            print("Received a POST request")
-            comment_form = CommentForm(data=request.POST)
-            if comment_form.is_valid():
-                print("Received a valid POST request")
-                comment = comment_form.save(commit=False)
-                comment.author = request.user
-                comment.post = post
-                comment.save()
-                messages.add_message(
-                    request, messages.SUCCESS, "Comment submitted"
-                )
-        # assigning the imported CommentForm class to a variable
-        comment_form = CommentForm()
-        print("About to render template")
-        # context:
-        return render(
-            request,
-            "board/post_detail.html",
-            {
-                "post": post,
-                "comments": comments,
-                "comment_count": comment_count,
-                "comment_form": comment_form,
-            },
-        )
 
 
 class AddPost(LoginRequiredMixin, CreateView):
     """
-    Display Add Post view.
-    LoginRequiredMixin checks if user is logged in before running CreateView.
-    If user is not logged in and attempts to add post, it redirects user to login page.
-    CreateView handles form to add a post in the DOM.
+    Display Add Post view
+    LoginRequiredMixin checks if user is logged in before running CreateView
+    If user is not logged in and attempts to add post, it redirects user to login page
+    CreateView handles form to add a post in the DOM
+    Related to :model:`board.Post`
     **Context**
     ``post``
         An instance of :model:`board.Post`.
@@ -108,8 +72,6 @@ class AddPost(LoginRequiredMixin, CreateView):
         Prevents user being able to choose other usernames as author.
         Delay saving post to database: check if image was upoloaded,
             else save post_image as None to database.
-            Check: Code from walkthrough project codestar, not working properly.
-            Check: (AddPost, self) removed from super() according to Python 3.
         """
         form.instance.user = self.request.user
         post = form.save(commit=False)
@@ -125,6 +87,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     Edit user's own content.
     Utilizes Django's authentication system's mixins to secure edit of only own content.
+    Related to :model:`board.Post`
     **Context**
     ``post``
         An instance of :model:`board.Post`.
@@ -167,6 +130,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     Delete user's own content.
     Utilizes Django's authentication system's mixins to secure deletion of only own content.
     Utilizes Django's built-in deletion logic.
+    Related to :model:`board.Post`
     ***Template:***
     :template:`board/post_confirm_delete.html`
     """
@@ -189,3 +153,48 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             """
             response = super().delete(request, *args, **kwargs)
             return HttpResponseRedirect(reverse("board"))
+
+
+class AddComment(LoginRequiredMixin, CreateView):
+    """
+    Creates a comment to a specific post
+    Display Add Comment view and handles creating a comment
+    LoginRequiredMixin checks if user is logged in before running CreateView
+    If user is not logged in and attempts to add post, it redirects user to login page
+    CreateView handles form to add a post in the DOM
+    Related to :model:`board.Comment`
+    **Context**
+    Context object name customized for readability
+    ``queryset``
+        All comments related to a single post
+    ***Template:***
+    :template:`board/post_detail.html`
+    ``comments``
+        All comments related to the post
+    ``comment_count``
+        A count of comments related to the post
+    ``comment_form``
+        An instance of :form:`board.CommentForm`
+    ``post``
+        An instance of :model:`board.Post`
+    """
+    template_name = "board/board.html"
+    model = Comment
+    form_class = CommentForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.post = get_object_or_404(Post, slug=self.kwargs['slug'])
+        messages.success(self.request, 'Your comment has been posted.')
+        response = super().form_valid(form)
+        return HttpResponseRedirect(reverse("board"))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = get_object_or_404(Post, slug=self.kwargs['slug'])
+        comments = post.comments.all().order_by("-published_date")
+        comment_count = post.comments.count()
+        context['post'] = post
+        context['comments'] = comments
+        context['comment_count'] = comment_count
+        return context

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load crispy_forms_tags %}
 
 {% block title %}Post Detail - {{post.title}}{% endblock %}
 
@@ -84,7 +85,7 @@
                 </div>
                 <div class="d-block p-2 comment-count">
                     <p><strong">
-                        <i class="fa-solid fa-comments" aria-label="number of comments"></i> {{ comment_count }}</strong>
+                        <i class="fa-solid fa-comments"></i> Number of comments: {{ comment_count }}</strong>
                     </p>
                 </div>
             </div>
@@ -137,10 +138,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12 col-sm-10 col-xl-8 form p-2">
-                                <form method="POST">
+                                <form method="POST" action="{% url 'add_comment' post.id %}>
                                     <h3>Leave a Comment:</h3>
                                     {% csrf_token %}
-                                    {{ comment_form | crispy }}
+                                    {{ form | crispy }}
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-info p-2">Submit Comment</button>
                                     </div>
@@ -154,7 +155,6 @@
                     </div>
                     {% endif %}
                 </div>
-
             </div>
         </div>
     </div>
