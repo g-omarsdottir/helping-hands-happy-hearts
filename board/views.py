@@ -39,6 +39,10 @@ class PostDetail(DetailView):
         An instance of :model:`board.Post`
     ``queryset``
         All published instances of :model:`bord.Post`
+    ``comments``
+        All comments related to the post
+    ``comment_count``
+        A count of comments related to the post
     ***Template:***
     :template:`board/post_detail.html`
     """
@@ -46,6 +50,22 @@ class PostDetail(DetailView):
     template_name = "board/post_detail.html"
     model = Post
     context_object_name = "post"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        context['comments'] = Comment.objects.filter(post=post)
+        return context
+
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.get_object()
+        comments = post.comments.all().order_by("-published_date")
+        comment_count = post.comments.count()
+        context['comments'] = comments
+        context['comment_count'] = comment_count
+        return context
 
 
 class AddPost(LoginRequiredMixin, CreateView):
@@ -169,32 +189,28 @@ class AddComment(LoginRequiredMixin, CreateView):
         All comments related to a single post
     ***Template:***
     :template:`board/post_detail.html`
-    ``comments``
-        All comments related to the post
-    ``comment_count``
-        A count of comments related to the post
     ``comment_form``
         An instance of :form:`board.CommentForm`
     ``post``
         An instance of :model:`board.Post`
     """
-    template_name = "board/board.html"
+    template_name = "board/post_detail.html"
     model = Comment
     form_class = CommentForm
 
     def form_valid(self, form):
+        """
+        Handles form submission to add comment
+        Provides success message as user feedback
+        """
         form.instance.author = self.request.user
-        form.instance.post = get_object_or_404(Post, slug=self.kwargs['slug'])
+        form.instance.post = get_object_or_404(Post, pk=self.kwargs['pk'])
         messages.success(self.request, 'Your comment has been posted.')
-        response = super().form_valid(form)
-        return HttpResponseRedirect(reverse("board"))
+        return super().form_valid(form)
+        #return HttpResponseRedirect(reverse('post_detail', kwargs={'slug': form.instance.post.slug}))
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        post = get_object_or_404(Post, slug=self.kwargs['slug'])
-        comments = post.comments.all().order_by("-published_date")
-        comment_count = post.comments.count()
-        context['post'] = post
-        context['comments'] = comments
-        context['comment_count'] = comment_count
-        return context
+    def get_success_url(self):
+        """
+        Returns URL to redirect to after a successfully adding comment.
+        """
+        return reverse('post_detail', kwargs={'slug': self.object.post.slug})
