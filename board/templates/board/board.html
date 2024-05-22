@@ -8,9 +8,19 @@
 <div class="d-block text-center p-2">
     {% csrf_token %}
     <h1>Offers & Requests</h1>
-    <p>
-        To pin your own Requests & Offers to the board, please sign in or sign up first.
-    </p>
+    <div>
+        {% if request.user.is_authenticated %}
+        <div class="d-flex justify-content-center gap-2">
+            <a href="{% url 'add_post' %}" class="btn btn-secondary col-xs-4 col-md-2 col-xl-1">
+                Add Post
+            </a>
+        </div>
+        {% else %}
+        <p>
+            To pin your own Requests & Offers to the board, please sign in or sign up first.
+        </p>
+        {% endif %}
+    </div>
 </div>
 <div class="container d-flex flex-row flex-wrap justify-content-center p-2 d-grid gap-3">
     {% for post in board %}
@@ -45,5 +55,18 @@
         </div>
     </a>
     {% endfor %}
+</div>
+<div class="d-block text-center p-2">
+    {% if request.user.is_authenticated %}
+    <div class="d-flex justify-content-center gap-2">
+        <a href="{% url 'add_post' %}" class="btn btn-secondary col-xs-4 col-md-2 col-xl-1">
+            Add Post
+        </a>
+    </div>
+    {% else %}
+    <p>
+        To pin your own Requests & Offers to the board, please sign in or sign up first.
+    </p>
+    {% endif %}
 </div>
 {% endblock %}
