@@ -1,15 +1,15 @@
-from django.forms import ModelForm
 from django import forms
+from django.forms import ModelForm
 
 # from djrichtextfield.widgets import RichTextWidget
 from ckeditor.fields import RichTextField
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
     """
     Form to create a post.
-    Related to :model:`blog.Post`.
+    Related to :model:`board.Post`.
     ***Template:***
     :template:`board/add_post.html`
     """
@@ -57,3 +57,20 @@ class PostForm(forms.ModelForm):
             "remarks": "Remarks",
             "target_date": "Target Date",
         }
+
+
+class CommentForm(forms.ModelForm):
+    """
+    Form to create a comment on a post.
+    Related to :model:`board.Comment`
+    and :model:`board.Post`.
+    ***Template:***
+    :template:`board/post_detail.html`
+    """
+
+    class Meta:
+        """
+        Defines the form fields
+        """
+        model = Comment
+        fields = ["body",]

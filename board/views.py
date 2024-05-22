@@ -1,12 +1,12 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.views.generic import (
     CreateView, ListView, DetailView, DeleteView, UpdateView
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponseRedirect
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 
 # Create your views here.
@@ -30,12 +30,20 @@ class Board(ListView):
 class PostDetail(DetailView):
     """
     Display detailed view of posts on Offers & Requests.
+    Related to :model:`board.Post`
+    and :model:`board.Comment`.
     **Context**
     Context object name customized for readability.
     ``post``
         An instance of :model:`board.Post`.
     ``queryset``
         All published instances of :model:`bord.Post`
+    ``comments``
+        All comments related to the post.
+    ``comment_count``
+        A count of approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`board.CommentForm`
     ***Template:***
     :template:`board/post_detail.html`
     """
@@ -43,6 +51,38 @@ class PostDetail(DetailView):
     template_name = "board/post_detail.html"
     model = Post
     context_object_name = "post"
+    
+    def form_valid(request, slug):
+        post = get_object_or_404(queryset, slug=slug)
+        comments = post.comments.all().order_by("-published_date")
+        comment_count = post.comments.count()
+
+        if request.method == "POST":
+            print("Received a POST request")
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                print("Received a valid POST request")
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.post = post
+                comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS, "Comment submitted"
+                )
+        # assigning the imported CommentForm class to a variable
+        comment_form = CommentForm()
+        print("About to render template")
+        # context:
+        return render(
+            request,
+            "board/post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "comment_count": comment_count,
+                "comment_form": comment_form,
+            },
+        )
 
 
 class AddPost(LoginRequiredMixin, CreateView):

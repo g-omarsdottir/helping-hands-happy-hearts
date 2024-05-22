@@ -24,7 +24,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ("author", "published_date", "category", "subcategory", "location")
     summernote_fields = "content"
 
-
 admin.site.register(Location)
 admin.site.register(Category)
 admin.site.register(Subcategory)
+admin.site.register(Comment)
