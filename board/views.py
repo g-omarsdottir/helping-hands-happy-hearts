@@ -109,10 +109,9 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         """
         Saves changes in form after editing.
-        Redirects to board (like in codestar walkthrough project).
+        Redirects to board after updating (like in codestar walkthrough project).
         """
         response = super().form_valid(form)
-        #slug = self.kwargs['slug']
         return HttpResponseRedirect(reverse("board"))
 
     def get_context_data(self, **kwargs):
@@ -127,10 +126,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """
     Delete user's own content.
     Utilizes Django's authentication system's mixins to secure deletion of only own content.
-    Template_name field is not required.
-    **Context**
-    ``post``
-        An instance of :model:`board.Post`.
+    Utilizes Django's built-in deletion logic.
     ***Template:***
     :template:`board/post_confirm_delete.html`
     """
@@ -146,8 +142,10 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         return self.request.user == self.get_object().author
 
-    def delete(self, request, *args, **kwargs):
-        """
-        Calls superclass delete method.
-        """
-        response = super().delete(request, *args, **kwargs)
+    def form_valid(self, request, *args, **kwargs):
+            """
+            Handles the deletion logic.
+            Redirects to board after deleting (like in codestar walkthrough project).
+            """
+            response = super().delete(request, *args, **kwargs)
+            return HttpResponseRedirect(reverse("board"))
