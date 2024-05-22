@@ -35,8 +35,12 @@
                                 </h3>
                             </li>
                             <li class="list-group-item">
+                                <h3><strong>Excerpt: </strong></h3>
+                                <p>{{ post.excerpt }}</p>
+                            </li>
+                            <li class="list-group-item">
                                 <h3><strong>Post Content: </strong></h3>
-                                <p> {{ post.content | safe}}</p>
+                                <p>{{ post.content | safe}}</p>
                                 <p>
                                     {% if post.location %}
                                     <strong>Location: </strong>{{ post.location }}</p>

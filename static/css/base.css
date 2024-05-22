@@ -43,15 +43,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-    font-size: 1.75em;
-}
-
-h3 {
     font-size: 1.5em;
 }
 
+h3 {
+    font-size: 1.25em;
+}
+
 h4 {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 main {
@@ -96,7 +96,6 @@ img.logo {
     overflow: hidden;
     color: var(--black);
     box-shadow: var(--black-box-shadow);
-    position: relative;
 }
 
 .posts:hover {
@@ -104,7 +103,7 @@ img.logo {
     box-shadow: var(--blue-box-shadow);
 }
 
-/* Box shadow for 3D "pressed effect" */
+/* Check: Box shadow for 3D "pressed effect" */
 /* 
 Explanation of values: 
 distance of shadow from element - blur/spread of shadow - no additional spread - color. 
@@ -112,12 +111,6 @@ Same for definition of second shadow.
 */
 .posts:active {
     box-shadow: 0.1em 0.1em 0 var(--warm-white), 0.2em 0.2em var(--blue);
-}
-
-.instruction {
-    position: absolute;
-    bottom: 20px;
-    background-color: rgba(254, 249, 239, 0.7);
 }
 
 /* Board - Detailed View of Posts ---------- */
@@ -133,7 +126,6 @@ Same for definition of second shadow.
     border-radius: 10px;
     display: block;
 }
-
 
 /* Footer -------------------------------------------------------------*/
 footer {
