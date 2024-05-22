@@ -100,6 +100,7 @@ class AddPost(LoginRequiredMixin, CreateView):
         else:
             post.post_image = None
         post.save()
+        messages.success(self.request, "You successfully pinned your post to the board!")
         return super().form_valid(form)
 
 
@@ -135,6 +136,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         Redirects to board after updating (like in codestar walkthrough project).
         """
         response = super().form_valid(form)
+        messages.success(self.request, "You successfully updated your post!")
         return HttpResponseRedirect(reverse("board"))
 
     def get_context_data(self, **kwargs):
@@ -172,6 +174,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             Redirects to board after deleting (like in codestar walkthrough project).
             """
             response = super().delete(request, *args, **kwargs)
+            messages.success(self.request, "You successfully deleted your post!")
             return HttpResponseRedirect(reverse("board"))
 
 
@@ -205,7 +208,7 @@ class AddComment(LoginRequiredMixin, CreateView):
         """
         form.instance.author = self.request.user
         form.instance.post = get_object_or_404(Post, pk=self.kwargs['pk'])
-        messages.success(self.request, 'Your comment has been posted.')
+        messages.success(self.request, 'Your comment has been posted!')
         return super().form_valid(form)
         #return HttpResponseRedirect(reverse('post_detail', kwargs={'slug': form.instance.post.slug}))
 
