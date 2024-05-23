@@ -58,6 +58,15 @@ class PostDetail(DetailView):
     model = Post
     context_object_name = "post"
 
+    def get_object(self):
+        """
+        Specify to return both slug and pk to use as arguments in other views.
+        """
+        if 'slug' in self.kwargs:
+            return get_object_or_404(Post, slug=self.kwargs['slug'])
+        elif 'pk' in self.kwargs:
+            return get_object_or_404(Post, pk=self.kwargs['pk'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
@@ -211,8 +220,10 @@ class AddComment(LoginRequiredMixin, CreateView):
         Handles form submission to add comment
         Provides success message as user feedback
         """
+        post_id = self.kwargs.get('post_id')
+        post = get_object_or_404(Post, pk=post_id)
         form.instance.author = self.request.user
-        form.instance.post = get_object_or_404(Post, pk=self.kwargs["pk"])
+        form.instance.post = post
         messages.success(self.request, "Your comment has been posted!")
         return super().form_valid(form)
 
@@ -220,4 +231,4 @@ class AddComment(LoginRequiredMixin, CreateView):
         """
         Returns URL to redirect to after a successfully adding comment.
         """
-        return reverse("post_detail", kwargs={"slug": self.object.post.slug})
+        return reverse_lazy("post_detail", kwargs={"pk": self.object.post.pk})

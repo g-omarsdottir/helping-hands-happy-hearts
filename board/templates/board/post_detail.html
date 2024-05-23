@@ -109,7 +109,7 @@
                     </div>
                     <div class="card-body">
                         {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'add_comment' slug=post.slug %}">
+                        <form method="POST" action="{% url 'add_comment' post.id %}">
                             {% csrf_token %}
                             {{ form | crispy }}
                             <div class=" text-center">
