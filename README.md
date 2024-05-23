@@ -164,6 +164,8 @@ Each Django model is represented with a table on the ERD along with its attribut
 ## Technology Used
 
 ### Libraries and Frameworks Used
+
+In addition to libraries and frameworks already installed in the Code Institute template:
 - [Django v4.2.13](https://docs.djangoproject.com/en/5.0/releases/4.2.13/) - Python web framework
 - [Django allauth](https://docs.allauth.org/en/latest/installation/index.html) - User account authentication and verification *(check: verif.)*
 - [Django Crispy Forms v2.1](https://django-crispy-forms.readthedocs.io/en/latest/install.html#installing-django-crispy-forms) - Simplifies the creation of forms
@@ -177,7 +179,11 @@ Each Django model is represented with a table on the ERD along with its attribut
 - [Autoslug](https://django-autoslug.readthedocs.io/_/downloads/en/stable/pdf/) - Automatically generates slug field for improved UX for less experienced users
 - [cloudinary v1.36.0](https://cloudinary.com/documentation/django_integration) - Allows users to upload images
 - [dj3-cloudinary-storage v0.0.6](https://cloudinary.com/documentation/rails_activestorage) - Provides storage of images uploaded by users
-- [Black v24.4.2](https://black.readthedocs.io/en/stable/) - Formats code compliant to pep8 
+- [Black v24.4.2](https://black.readthedocs.io/en/stable/) - Formats code compliant to pep8
+- [whitenoise v5.3.0](https://pypi.org/project/whitenoise/) - Python package to simplify static file serving for web apps
+- [psycopg2 v2.9.9](https://pypi.org/project/psycopg2/) - PostgreSQL database adapter for the Python programming language
+- [gunicorn v20.1.0](https://docs.gunicorn.org/en/20.1.0/) - Gunicorn serves as a Python WSGI HTTP server for UNIX, designed to interface with WSGI-compliant web applications to serve applications efficiently and reliably, handling multiple concurrent connections and requests optimisation (equivalent to manage.py runserver used in development but for deployed app)
+- [dj-database-url v0.5.0](https://pypi.org/project/dj-database-url/0.5.0/) - Django utility allows to utilize the 12factor inspired DATABASE_URL environment variable to configure the Django application
 
 ### Programs Used
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD

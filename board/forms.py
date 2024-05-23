@@ -39,7 +39,7 @@ class PostForm(forms.ModelForm):
         widgets = {
             "excerpt": forms.Textarea(attrs={"rows": 5}),
             "remarks": forms.Textarea(attrs={"rows": 5}),
-            "target_date": forms.DateInput(format="%Y-%m-%d", attrs={'type': 'date'}), 
+            "target_date": forms.DateInput(format="%Y-%m-%d", attrs={"type": "date"}),
         }
 
         labels = {

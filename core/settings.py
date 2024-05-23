@@ -36,7 +36,6 @@ This way, humar error and security related mistakes can be avoided.
 Setting it as an if else statement for better readability.
 """
 DEBUG = True
-#"DEVELOPMENT" if os.environ["DEVELOPMENT"] else False
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -150,16 +149,14 @@ WSGI_APPLICATION = "core.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    "default": {
 #        "ENGINE": "django.db.backends.sqlite3",
 #        "NAME": BASE_DIR / "db.sqlite3",
 #    }
-#}
+# }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 

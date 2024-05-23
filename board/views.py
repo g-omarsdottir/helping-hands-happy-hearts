@@ -64,10 +64,10 @@ class PostDetail(DetailView):
         """
         Specify to return both slug and pk to use as arguments in other views.
         """
-        if 'slug' in self.kwargs:
-            return get_object_or_404(Post, slug=self.kwargs['slug'])
-        elif 'pk' in self.kwargs:
-            return get_object_or_404(Post, pk=self.kwargs['pk'])
+        if "slug" in self.kwargs:
+            return get_object_or_404(Post, slug=self.kwargs["slug"])
+        elif "pk" in self.kwargs:
+            return get_object_or_404(Post, pk=self.kwargs["pk"])
 
     def post(self, request, *args, **kwargs):
         """
@@ -79,10 +79,10 @@ class PostDetail(DetailView):
         if request.user.is_authenticated:
             if request.user in post.likes.all():
                 post.likes.remove(request.user)
-                messages.success(request, 'You have unliked this post.')
+                messages.success(request, "You have unliked this post.")
             else:
                 post.likes.add(request.user)
-                messages.success(request, 'You have liked this post.')
+                messages.success(request, "You have liked this post.")
         return HttpResponseRedirect(reverse("post_detail", kwargs={"slug": post.slug}))
 
 
@@ -123,7 +123,9 @@ class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class EditPost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class EditPost(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView
+):
     """
     Edit user's own content.
     Utilizes Django's authentication system's mixins to secure edit of only own content.
@@ -162,7 +164,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, Upd
         """
         Updates post.
         """
-        #kwargs.update({"post": self.object})
+        # kwargs.update({"post": self.object})
         context = super().get_context_data(**kwargs)
         return context
 
@@ -170,7 +172,9 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, Upd
         return reverse("post_detail", kwargs={"slug": self.object.slug})
 
 
-class DeletePost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class DeletePost(
+    LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView
+):
     """
     Delete user's own content.
     Utilizes Django's authentication system's mixins to secure deletion of only own content.
