@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.views.generic import (
-    CreateView, ListView, DetailView, DeleteView, UpdateView
+    CreateView,
+    ListView,
+    DetailView,
+    DeleteView,
+    UpdateView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
@@ -23,6 +27,7 @@ class Board(ListView):
     ***Template:***
     :template:`board/board.html`
     """
+
     queryset = Post.objects.filter(status=1)
     template_name = "board/board.html"
     model = Post
@@ -47,6 +52,7 @@ class PostDetail(DetailView):
     ***Template:***
     :template:`board/post_detail.html`
     """
+
     queryset = Post.objects.filter(status=1)
     template_name = "board/post_detail.html"
     model = Post
@@ -55,17 +61,16 @@ class PostDetail(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
-        context['comments'] = Comment.objects.filter(post=post)
+        context["comments"] = Comment.objects.filter(post=post)
         return context
 
-        
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
         comments = post.comments.all().order_by("-published_date")
         comment_count = post.comments.count()
-        context['comments'] = comments
-        context['comment_count'] = comment_count
+        context["comments"] = comments
+        context["comment_count"] = comment_count
         return context
 
 
@@ -82,6 +87,7 @@ class AddPost(LoginRequiredMixin, CreateView):
     ***Template:***
     :template:`board/add_post.html`
     """
+
     template_name = "board/add_post.html"
     model = Post
     form_class = PostForm
@@ -101,7 +107,9 @@ class AddPost(LoginRequiredMixin, CreateView):
         else:
             post.post_image = None
         post.save()
-        messages.success(self.request, "You successfully pinned your post to the board!")
+        messages.success(
+            self.request, "You successfully pinned your post to the board!"
+        )
         return super().form_valid(form)
 
 
@@ -118,6 +126,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     ***Template:***
     :template:`board/edit_post.html`
     """
+
     template_name = "board/edit_post.html"
     model = Post
     form_class = PostForm
@@ -143,11 +152,11 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         Updates post.
         """
-        kwargs.update({'post': self.object})
+        kwargs.update({"post": self.object})
         return super(EditPost, self).get_context_data(**kwargs)
 
     def get_success_url(self):
-        return reverse('post_detail', kwargs={'slug': self.object.slug})
+        return reverse("post_detail", kwargs={"slug": self.object.slug})
 
 
 class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -159,6 +168,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     ***Template:***
     :template:`board/post_confirm_delete.html`
     """
+
     template_name = "board/post_confirm_delete.html"
     model = Post
     success_url = reverse_lazy("board")
@@ -191,6 +201,7 @@ class AddComment(LoginRequiredMixin, CreateView):
     ``post``
         An instance of :model:`board.Post`
     """
+
     template_name = "board/post_detail.html"
     model = Comment
     form_class = CommentForm
@@ -201,13 +212,12 @@ class AddComment(LoginRequiredMixin, CreateView):
         Provides success message as user feedback
         """
         form.instance.author = self.request.user
-        form.instance.post = get_object_or_404(Post, pk=self.kwargs['pk'])
-        messages.success(self.request, 'Your comment has been posted!')
+        form.instance.post = get_object_or_404(Post, pk=self.kwargs["pk"])
+        messages.success(self.request, "Your comment has been posted!")
         return super().form_valid(form)
-        
 
     def get_success_url(self):
         """
         Returns URL to redirect to after a successfully adding comment.
         """
-        return reverse('post_detail', kwargs={'slug': self.object.post.slug})
+        return reverse("post_detail", kwargs={"slug": self.object.post.slug})

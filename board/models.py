@@ -9,9 +9,9 @@ from django_resized import ResizedImageField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 AVAILABILITY_CHOICES = [
-    ("evenings", "Evenings"),
-    ("weekends", "Weekends"),
-    ("generally", "Generally Available"),
+    ("Evenings", "Evenings"),
+    ("Weekends", "Weekends"),
+    ("Generally Available", "Generally Available"),
 ]
 
 TOOLS_REQUIRED = [
@@ -106,9 +106,9 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, related_name="post_owner", on_delete=models.CASCADE
     )
-    title = models.CharField(max_length=60, null=False, blank=False)
+    title = models.CharField(max_length=40, null=False, blank=False)
     slug = AutoSlugField(populate_from="title", always_update=True, unique=True)
-    excerpt = models.CharField(max_length=500, null=False, blank=False)
+    excerpt = models.CharField(max_length=100, null=False, blank=False)
     content = RichTextField(max_length=5000, null=False, blank=False)
     published_date = models.DateTimeField(auto_now_add=True)
     edited_date = models.DateTimeField(auto_now=True)
@@ -118,21 +118,21 @@ class Post(models.Model):
         related_name="post_location",
         null=True,
         blank=True,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
     )
     category = models.ForeignKey(
         Category,
         related_name="post_category",
         null=False,
         blank=False,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
     subcategory = models.ForeignKey(
         Subcategory,
         related_name="post_subcategory",
         null=True,
         blank=True,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
     )
     post_image = ResizedImageField(
         size=[400, None],
@@ -140,21 +140,18 @@ class Post(models.Model):
         null=True,
         blank=True,
         quality=75,
-        force_format="webp"
+        force_format="webp",
     )
     availability = models.CharField(
-        max_length=20,
-        choices=AVAILABILITY_CHOICES,
-        null=True,
-        blank=True
+        max_length=20, choices=AVAILABILITY_CHOICES, null=True, blank=True
     )
     tools_required = models.CharField(
         max_length=50, choices=TOOLS_REQUIRED, null=True, blank=True
     )
     remarks = models.TextField(max_length=250, null=True, blank=True)
+    contact_details = models.CharField(max_length=250, null=False, blank=False)
     target_date = models.DateField(null=True, blank=True)
     likes = models.ManyToManyField(User, blank=True, related_name="liked_post")
-    bookmarks = models.ManyToManyField(User, blank=True, related_name="bookmarked_post")
 
     class Meta:
         """

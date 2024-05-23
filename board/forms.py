@@ -34,6 +34,7 @@ class PostForm(forms.ModelForm):
             "availability",
             "tools_required",
             "remarks",
+            "contact_details",
             "target_date",
         ]
         # excerpt = forms.CharField(widget=RichTextWidget())
@@ -55,6 +56,7 @@ class PostForm(forms.ModelForm):
             "availability": "Availability",
             "tools_required": "Tools Required",
             "remarks": "Remarks",
+            "contact_details": "Contact Details (Email or Phone)",
             "target_date": "Target Date",
         }
 
@@ -72,5 +74,8 @@ class CommentForm(forms.ModelForm):
         """
         Defines the form fields
         """
+
         model = Comment
-        fields = ["body",]
+        fields = [
+            "body",
+        ]
