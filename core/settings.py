@@ -169,7 +169,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Check: during development no email verification. Consider implementing to final version.
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
