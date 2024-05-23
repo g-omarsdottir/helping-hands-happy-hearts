@@ -237,8 +237,6 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 - Special thanks to Dee-McG for her extremely helpful [video tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) on building a recipe django blog for recipes and [documentation](https://github.com/Dee-McG/Recipe-Tutorial). Her tutorial was a great inspiration and very helpful in addition to the official documentation to understand the concepts.
 - Code Institute walkthrough project codestar for inspiration.
 - My friend Stephan Reich, Software Developer, for invaluable advice, especially with urls (reverse_lazy).
-- My mentor, Mitko for his guidance.
-- Slack community for support and advice.
 - [Django docs get_FOO_display()](https://docs.djangoproject.com/en/5.0/ref/models/instances/) - Return "human-readable" value of model fields.
 - [Stackoverflow](https://stackoverflow.com/) for various how-tos, tipps and tricks of the trade.
 - Official documentation from [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) and [Django](https://docs.djangoproject.com/en/5.0/).
@@ -252,3 +250,10 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 - [Bjørnar Kibsgaard on Pixabay](https://pixabay.com/users/bjokib-6383051/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7917641)
 - [JackieLou DL on Pixabay](https://pixabay.com/photos/dog-walk-snow-shetland-sheepdog-6000001/)
 - [Favicon by surang](https://www.flaticon.com/free-icons/charity")
+
+### Acknowledgements
+
+- My fellow students at Code Institute, especially [Niclas Hugdahl](https://github.com/NiclO1337) and [Amir Schkolnik](https://github.com/AmirShkolnik), for guidance, inspiration, testing and proofreading.
+- My Code Institute class facilitator, Kristyna Wach, for her cheerful motivation and encouragement.
+- My mentor, Mitko Bachvarov for his guidance.
+- Slack community for support and advice.
