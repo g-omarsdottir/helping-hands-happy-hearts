@@ -35,7 +35,8 @@ If os does not find the constant, it sets DEBUG to False.
 This way, humar error and security related mistakes can be avoided.
 Setting it as an if else statement for better readability.
 """
-DEBUG = "DEVELOPMENT" if os.environ["DEVELOPMENT"] else False
+DEBUG = False
+#"DEVELOPMENT" if os.environ["DEVELOPMENT"] else False
 
 ALLOWED_HOSTS = [
     "localhost",
