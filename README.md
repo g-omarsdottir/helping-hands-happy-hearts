@@ -58,15 +58,22 @@ Social Media influencers have a bounty of opportunities to create content and bo
 
 ### First Time Visitors Goals
 As a first time user I can
-- ...
+- Browse a wide range of help requests and offered services.
+- Discover the variety of ways they can contribute or find assistance.
+- Understand the scope of the platform and its potential benefits.
+
 
 ### Returning Visitors Goals
 As a returning visitor, I want to
-- ...
+- Regularly check for relevant offers that address my current needs.
+- Easily find new opportunities to offer help that match my skills.
+- Feel comfortable reaching out and requesting assistance.
+
 
 ### Frequent Visitors Goals
 As a frequent visitor, I want to
-- ...
+- Search for new offers and requests.
+- Feel connected to a kind and caring community.
 
 ## Design
 
@@ -112,6 +119,18 @@ Desktop Version
 ![sign-in](/documentation/sign-in.png)
 </details>
 
+### Colors
+
+The colors used are from this color palette suggested by [coolers](https://coolors.co/palettes/trending):
+
+![color palette](/documentation/colors.png)
+
+For a sleek layout and escpecailly not knowing what kind of images users would upload, the use of colors was kept minimal to avoid visual clutter. Color accents were used to create depth with box-shadows and for pseudo-class hover effect. The footer is in vibrant coral color since it is conteptually seperated from the rest of the website and thus does not irritate or take the focus off the rest of the content.
+
+The font color is a warm tone of black and background color is offwhite, which make a very good match for accessability, readability and contrast while being easy on the eye. [Coolors Color Contrast Checker](https://coolors.co/contrast-checker/333333-f5f5f5) score:
+
+![contrast](/documentation/contrast.png)
+
 ## Project planning
 
 ### Database Schema
@@ -127,7 +146,7 @@ Each Django model is represented with a table on the ERD along with its attribut
 - **User Management:** The models utilize the Django Allauth User model.
 - **Content Management:** Users can create and update own content, interact with other users by commenting on and liking content and comments.
 - **Technical Design:** Separation of concern was implemented by deviding key components into individual Django Models *(see ERD)*. This allows for simple and reliable queries based on the primary key, as well as easy management and scalability.
-- Relationships between the model fields are indicated with relationship lines on the ERD.
+- **Relationships** between the model fields are indicated with relationship lines on the ERD.
 - **Security Practises:** Security best practices were obtained using CSRF Tokens for data protection and authentication using Django Allauth.
 
 <details>
@@ -164,6 +183,7 @@ Each Django model is represented with a table on the ERD along with its attribut
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
 [Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) to convert images into webp format
 [Optimizilla](https://imagecompressor.com/) to compress image file size
+[Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
 
 ## Features
 
@@ -210,5 +230,24 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 
 ## Credits
 
-- [Cloudinary](https://github.com/cloudinary-devs/my-django-app/blob/main/django_app/forms.py) - Code from Cloudinary [tutorial](https://cloudinary.com/documentation/django_helper_methods_tutorial) to allow users to upload images.
+- The content fo this project was written by me, Gudrun Omarsdottir.
+
+### Content
+
+- Special thanks to Dee-McG for her extremely helpful [video tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) on building a recipe django blog for recipes and [documentation](https://github.com/Dee-McG/Recipe-Tutorial). Her tutorial was a great inspiration and very helpful in addition to the official documentation to understand the concepts.
+- Code Institute walkthrough project codestar for inspiration.
+- My friend Stephan Reich, Software Developer, for invaluable advice, especially with urls (reverse_lazy).
+- My mentor, Mitko for his guidance.
+- Slack community for support and advice.
 - [Django docs get_FOO_display()](https://docs.djangoproject.com/en/5.0/ref/models/instances/) - Return "human-readable" value of model fields.
+- [Stackoverflow](https://stackoverflow.com/) for various how-tos, tipps and tricks of the trade.
+- Official documentation from [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) and [Django](https://docs.djangoproject.com/en/5.0/).
+- [Gemini AI](https://gemini.google.com/app) for inspiration for the user posts on the website.
+
+### Imagery
+
+- [Dani Guitarra on Unsplash](https://unsplash.com/photos/persons-hand-forming-heart-7JbUsmYPwP8) - for main website and default placeholder image
+- [Daniel Watson on Unsplash](https://unsplash.com/photos/green-and-black-lawnmower-on-green-grass-8vBpYpTGo90)
+- [sabinevanerp on Pixabay, 1:](https://pixabay.com/photos/woman-indoors-people-grown-up-hand-3188750/),[2:](https://pixabay.com/users/sabinevanerp-2145163/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3188745)
+- [Bjørnar Kibsgaard on Pixabay](https://pixabay.com/users/bjokib-6383051/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7917641)
+- [JackieLou DL on Pixabay](https://pixabay.com/photos/dog-walk-snow-shetland-sheepdog-6000001/)
