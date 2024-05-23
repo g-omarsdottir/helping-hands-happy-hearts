@@ -251,3 +251,4 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 - [sabinevanerp on Pixabay, 1:](https://pixabay.com/photos/woman-indoors-people-grown-up-hand-3188750/),[2:](https://pixabay.com/users/sabinevanerp-2145163/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3188745)
 - [Bjørnar Kibsgaard on Pixabay](https://pixabay.com/users/bjokib-6383051/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7917641)
 - [JackieLou DL on Pixabay](https://pixabay.com/photos/dog-walk-snow-shetland-sheepdog-6000001/)
+- [Favicon by surang](https://www.flaticon.com/free-icons/charity")
