@@ -142,9 +142,9 @@ The Entity Relationship Diagram (ERD, see below) was created using before starti
 Each Django model is represented with a table on the ERD along with its attributes and model fields.
 
 **Database Overview:**
-- **Key Features:** Stores user posts, and comments.
+- **Key Features:** Stores user posts.
 - **User Management:** The models utilize the Django Allauth User model.
-- **Content Management:** Users can create and update own content, interact with other users by commenting on and liking content and comments.
+- **Content Management:** Users can create and update own content, interact with other users by liking content.
 - **Technical Design:** Separation of concern was implemented by deviding key components into individual Django Models *(see ERD)*. This allows for simple and reliable queries based on the primary key, as well as easy management and scalability.
 - **Relationships** between the model fields are indicated with relationship lines on the ERD.
 - **Security Practises:** Security best practices were obtained using CSRF Tokens for data protection and authentication using Django Allauth.

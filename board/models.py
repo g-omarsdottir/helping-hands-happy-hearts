@@ -15,9 +15,9 @@ AVAILABILITY_CHOICES = [
 ]
 
 TOOLS_REQUIRED = [
-    ("have", "I Have the Necessary Tools"),
-    ("need", "Tools Required - which I Do Not Have"),
-    ("n.a.", "No Tools Required"),
+    ("I Have the Necessary Tools", "I Have the Necessary Tools"),
+    ("Tools Required - which I Do Not Have", "Tools Required - which I Do Not Have"),
+    ("No Tools Required", "No Tools Required"),
 ]
 
 
@@ -97,7 +97,6 @@ class Post(models.Model):
     """
     Stores a user post entry.
     Related to :model:`auth.User`
-    and :model:`Comment`
     and :model:`Location`
     and :model:`Category`
     and :model:`Subcategory`.
@@ -112,7 +111,7 @@ class Post(models.Model):
     content = RichTextField(max_length=5000, null=False, blank=False)
     published_date = models.DateTimeField(auto_now_add=True)
     edited_date = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     location = models.ForeignKey(
         Location,
         related_name="post_location",
@@ -171,28 +170,3 @@ class Post(models.Model):
 
     def __str__(self):
         return f"{self.title} | posted by {self.author}"
-
-
-class Comment(models.Model):
-    """
-    Stores a user comment entry.
-    Related to :model:`auth.User`
-    and :model:`blog.Post`.
-    """
-
-    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
-    author = models.ForeignKey(User, related_name="commenter", on_delete=models.CASCADE)
-    body = models.TextField()
-    published_date = models.DateTimeField(auto_now=True)
-    edited_date = models.DateTimeField(auto_now=True)
-    likes = models.ManyToManyField(User, blank=True, related_name="liked_comment")
-
-    class Meta:
-        """
-        Orders the comments in chronological order, newes first.
-        """
-
-        ordering = ["published_date"]
-
-    def __str__(self):
-        return f"Comment: {self.body} by {self.author}"

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Post, Comment, Location, Category, Subcategory
+from .models import Post, Location, Category, Subcategory
 
 
 # Register your models here.
@@ -28,4 +28,3 @@ class PostAdmin(SummernoteModelAdmin):
 admin.site.register(Location)
 admin.site.register(Category)
 admin.site.register(Subcategory)
-admin.site.register(Comment)

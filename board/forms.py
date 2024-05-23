@@ -1,9 +1,7 @@
 from django import forms
 from django.forms import ModelForm
-
-# from djrichtextfield.widgets import RichTextWidget
 from ckeditor.fields import RichTextField
-from .models import Post, Comment
+from .models import Post
 
 
 class PostForm(forms.ModelForm):
@@ -26,7 +24,6 @@ class PostForm(forms.ModelForm):
             "title",
             "excerpt",
             "content",
-            "status",
             "location",
             "category",
             "subcategory",
@@ -42,6 +39,7 @@ class PostForm(forms.ModelForm):
         widgets = {
             "excerpt": forms.Textarea(attrs={"rows": 5}),
             "remarks": forms.Textarea(attrs={"rows": 5}),
+            "target_date": forms.DateInput(format="%Y-%m-%d", attrs={'type': 'date'}), 
         }
 
         labels = {
@@ -59,23 +57,3 @@ class PostForm(forms.ModelForm):
             "contact_details": "Contact Details (Email or Phone)",
             "target_date": "Target Date",
         }
-
-
-class CommentForm(forms.ModelForm):
-    """
-    Form to create a comment on a post.
-    Related to :model:`board.Comment`
-    and :model:`board.Post`.
-    ***Template:***
-    :template:`board/post_detail.html`
-    """
-
-    class Meta:
-        """
-        Defines the form fields
-        """
-
-        model = Comment
-        fields = [
-            "body",
-        ]

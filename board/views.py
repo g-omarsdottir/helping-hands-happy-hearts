@@ -14,8 +14,8 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .models import Post
+from .forms import PostForm
 
 
 # Create your views here.
@@ -41,7 +41,6 @@ class PostDetail(DetailView):
     """
     Display detailed view of posts on Offers & Requests
     Related to :model:`board.Post`
-    and :model:`board.Comment`
     **Context**
     Context object name customized for readability.
     ``post``
@@ -52,10 +51,6 @@ class PostDetail(DetailView):
         An instance of :model:`board.Post`
     ``total_likes``
         An instance of :model:`board.Post`
-    ``comments``
-        All comments related to the post
-    ``comment_count``
-        A count of comments related to the post
     ***Template:***
     :template:`board/post_detail.html`
     """
@@ -74,13 +69,6 @@ class PostDetail(DetailView):
         elif 'pk' in self.kwargs:
             return get_object_or_404(Post, pk=self.kwargs['pk'])
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        post = self.get_object()
-        context["comments"] = Comment.objects.filter(post=post)
-        return context
-
-    #@method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         """
         Handles the like button.
@@ -204,46 +192,3 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, D
         Returns False if user is not content author and throws 403 error.
         """
         return self.request.user == self.get_object().author
-
-
-class AddComment(LoginRequiredMixin, CreateView):
-    """
-    Creates a comment to a specific post
-    Display Add Comment view and handles creating a comment
-    LoginRequiredMixin checks if user is logged in before running CreateView
-    If user is not logged in and attempts to add post, it redirects user to login page
-    CreateView handles form to add a post in the DOM
-    Related to :model:`board.Comment`
-    **Context**
-    Context object name customized for readability
-    ``queryset``
-        All comments related to a single post
-    ***Template:***
-    :template:`board/post_detail.html`
-    ``comment_form``
-        An instance of :form:`board.CommentForm`
-    ``post``
-        An instance of :model:`board.Post`
-    """
-
-    template_name = "board/post_detail.html"
-    model = Comment
-    form_class = CommentForm
-    success_message = "Your comment has been posted!"
-
-    def form_valid(self, form):
-        """
-        Handles form submission to add comment
-        Provides success message as user feedback
-        """
-        post_id = self.kwargs.get('post_id')
-        post = get_object_or_404(Post, pk=post_id)
-        form.instance.author = self.request.user
-        form.instance.post = post
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        """
-        Returns URL to redirect to after a successfully adding comment.
-        """
-        return reverse_lazy("post_detail", kwargs={"pk": self.object.post.pk})
