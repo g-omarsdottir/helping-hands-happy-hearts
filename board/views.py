@@ -8,6 +8,7 @@ from django.views.generic import (
     UpdateView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
@@ -79,7 +80,7 @@ class PostDetail(DetailView):
         context["comments"] = Comment.objects.filter(post=post)
         return context
 
-    @method_decorator(login_required)
+    #@method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         """
         Handles the like button.
@@ -90,12 +91,14 @@ class PostDetail(DetailView):
         if request.user.is_authenticated:
             if request.user in post.likes.all():
                 post.likes.remove(request.user)
+                messages.success(request, 'You have unliked this post.')
             else:
                 post.likes.add(request.user)
+                messages.success(request, 'You have liked this post.')
         return HttpResponseRedirect(reverse("post_detail", kwargs={"slug": post.slug}))
 
 
-class AddPost(LoginRequiredMixin, CreateView):
+class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     Display Add Post view
     LoginRequiredMixin checks if user is logged in before running CreateView
@@ -113,6 +116,7 @@ class AddPost(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy("board")
+    success_message = "You successfully pinned your post to the board!"
 
     def form_valid(self, form):
         """
@@ -128,13 +132,10 @@ class AddPost(LoginRequiredMixin, CreateView):
         else:
             post.post_image = None
         post.save()
-        messages.success(
-            self.request, "You successfully pinned your post to the board!"
-        )
         return super().form_valid(form)
 
 
-class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class EditPost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """
     Edit user's own content.
     Utilizes Django's authentication system's mixins to secure edit of only own content.
@@ -151,6 +152,7 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = "board/edit_post.html"
     model = Post
     form_class = PostForm
+    success_message = "You successfully updated your post!"
 
     def test_func(self):
         """
@@ -166,21 +168,21 @@ class EditPost(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         Redirects to board after updating (like in codestar walkthrough project).
         """
         response = super().form_valid(form)
-        messages.success(self.request, "You successfully updated your post!")
         return response
 
     def get_context_data(self, **kwargs):
         """
         Updates post.
         """
-        kwargs.update({"post": self.object})
-        return super(EditPost, self).get_context_data(**kwargs)
+        #kwargs.update({"post": self.object})
+        context = super().get_context_data(**kwargs)
+        return context
 
     def get_success_url(self):
         return reverse("post_detail", kwargs={"slug": self.object.slug})
 
 
-class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class DeletePost(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """
     Delete user's own content.
     Utilizes Django's authentication system's mixins to secure deletion of only own content.
@@ -193,6 +195,7 @@ class DeletePost(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = "board/post_confirm_delete.html"
     model = Post
     success_url = reverse_lazy("board")
+    success_message = "You successfully deleted your post!"
 
     def test_func(self):
         """
@@ -226,6 +229,7 @@ class AddComment(LoginRequiredMixin, CreateView):
     template_name = "board/post_detail.html"
     model = Comment
     form_class = CommentForm
+    success_message = "Your comment has been posted!"
 
     def form_valid(self, form):
         """
@@ -236,7 +240,6 @@ class AddComment(LoginRequiredMixin, CreateView):
         post = get_object_or_404(Post, pk=post_id)
         form.instance.author = self.request.user
         form.instance.post = post
-        messages.success(self.request, "Your comment has been posted!")
         return super().form_valid(form)
 
     def get_success_url(self):
