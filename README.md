@@ -236,7 +236,7 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 
 - Special thanks to Dee-McG for her extremely helpful [video tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) on building a recipe django blog for recipes and [documentation](https://github.com/Dee-McG/Recipe-Tutorial). Her tutorial was a great inspiration and very helpful in addition to the official documentation to understand the concepts.
 - Code Institute walkthrough project codestar for inspiration.
-- My friend Stephan Reich, Software Developer, for invaluable advice, especially with urls (reverse_lazy).
+- My friend Stephan Reich, Software Developer, for invaluable advice, especially with urls (reverse_lazy) and how to use a button to toggle likes on and off.
 - [Django docs get_FOO_display()](https://docs.djangoproject.com/en/5.0/ref/models/instances/) - Return "human-readable" value of model fields.
 - [Stackoverflow](https://stackoverflow.com/) for various how-tos, tipps and tricks of the trade.
 - Official documentation from [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) and [Django](https://docs.djangoproject.com/en/5.0/).

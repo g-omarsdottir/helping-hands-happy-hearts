@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.views.generic import (
     CreateView,
@@ -8,6 +8,8 @@ from django.views.generic import (
     UpdateView,
 )
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
@@ -45,6 +47,10 @@ class PostDetail(DetailView):
         An instance of :model:`board.Post`
     ``queryset``
         All published instances of :model:`bord.Post`
+    ``likes``
+        An instance of :model:`board.Post`
+    ``total_likes``
+        An instance of :model:`board.Post`
     ``comments``
         All comments related to the post
     ``comment_count``
@@ -73,14 +79,20 @@ class PostDetail(DetailView):
         context["comments"] = Comment.objects.filter(post=post)
         return context
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        """
+        Handles the like button.
+        Toggles like and unlike.
+        Method decorator ensures that only logged in users can like.
+        """
         post = self.get_object()
-        comments = post.comments.all().order_by("-published_date")
-        comment_count = post.comments.count()
-        context["comments"] = comments
-        context["comment_count"] = comment_count
-        return context
+        if request.user.is_authenticated:
+            if request.user in post.likes.all():
+                post.likes.remove(request.user)
+            else:
+                post.likes.add(request.user)
+        return HttpResponseRedirect(reverse("post_detail", kwargs={"slug": post.slug}))
 
 
 class AddPost(LoginRequiredMixin, CreateView):

@@ -83,8 +83,30 @@
                     </div>
                     {% endif %}
                 </div>
-
+                <!-- Display count of likes. Button to Like and Dislike.  -->
+                <div class="d-block p-2 likes-count">
+                    <p><i class="fa-solid fa-heart"></i> {{ post.total_likes }} Likes</p>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="d-block p-2 likes-count">
+                    <form method="post" action="{% url 'post_detail' slug=post.slug %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-info mb-2">
+                            {% if request.user in post.likes.all %}
+                            Unlike
+                            {% else %}
+                            Like
+                            {% endif %}
+                        </button>
+                    </form>
+                    {% else %}
+                    <div class="d-block likes-count">
+                        <p>Log in to like post</p>
+                    </div>
+                    {% endif %}
+                </div>
                 <!-- Displaying count of comments -->
+
                 <div class="d-block p-2 comment-count">
                     <p>
                         <strong">

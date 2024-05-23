@@ -153,6 +153,15 @@ class Post(models.Model):
     target_date = models.DateField(null=True, blank=True)
     likes = models.ManyToManyField(User, blank=True, related_name="liked_post")
 
+    def total_likes(self):
+        """
+        Direct access to number of total likes.
+        Related to :view:`PostDetail`
+        **Template:**:
+        :template:`post_detail.html`
+        """
+        return self.likes.count()
+
     class Meta:
         """
         Orders the posts in chronological order, newest first.

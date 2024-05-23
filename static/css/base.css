@@ -122,6 +122,10 @@ Same for definition of second shadow.
     box-shadow: var(--black-box-shadow);
 }
 
+.likes-count {
+    margin-left: 40px;
+}
+
 .comment-count {
     margin-left: 40px;
 }
