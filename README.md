@@ -207,6 +207,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ### Future Features
 
+- Comment feature to comment on posts.
 - Button to turn on amplified text for low vision people. Older people don't necessecarily know how to utilize assistive technology, so including a button for extra large text would be helpful.
 
     <details>
@@ -221,8 +222,6 @@ In addition to libraries and frameworks already installed in the Code Institute 
 - Add more visual user feedback using JavaScript to customize the layout further and improve user experience.
 - Search function.
 
-
-*Testing and Bugs (separate)*
 ## Deployment and Local Development
 
 ### Neon Database
@@ -233,6 +232,49 @@ This project utilizes a relational database powered by [Neon.tech](https://neon.
 - Create or navigate to your "Tier" (one free tier per user).
 - Navigate to the "Dashboard" on the left side menu.
 - In the section "Connection Details", you will find the link to the database displayed in the subsection "Connection String".
+
+### Deployement using Heroku
+
+To deploy the repository:
+- Log into Heroku and navigate to the dashboard.
+- Navigate to the button "New" in the top right corner and select "Create New App" from the navigation dropdown menu.
+- Enter a name for the app. The name of the app must be unique and cannot be identical to any other app deployed by other users on Heroku.
+- Select your region, "United States" or "Europe", from the navigation dropdown menu.
+- Click on the button "Create App".
+- Navigate to "Deploy" on the top navigation menu, scroll down to "Deploy Method" and connect the repository with GitHub.
+- Navigate to "Settings" on the top navigation menu.
+- In the section "Config Var", click on the button "Reveal Config Vars".
+- Click on "Add a new Config Var" and add the necessary keys and values.
+    - SECRET_KEY with the value of the secret key
+    - DATABASE_URL with the value of the database url
+    - CLOUDINARY_URL with the value of the cloudinary url
+- Navigate to section "Deploy" on the top navigation menu.
+- Select "GitHub" as the deployment method.
+- Search for the repository to be deployed by using the search bar and click "Connect".
+- Select the repository branch to be deployed.
+- Choose "Manual" deployment.
+    - Manual deployment must be manually re-deployed after pushing new changes to the repository.
+    - Crucial when working with DEBUG=True during development.
+- Click the button "View" to open the link to the deployed project.
+
+### Local Development
+
+#### Local Clone
+
+To clone the repository:
+- Log in to GitHub and navigate to the repository of this project.
+- Click on the green button "Code" to open the dropdown menu, select "Clone with HTTPS, SSH or GitHub CLI" and copy the link provided.
+- Open "Terminal" (or "Git Bash") in your code editor.
+- Change the current working directory to the location where you want the cloned directory to be made.
+- Type "git clone" in the terminal and then paste the URL copied on GitHub in step 2, above.
+- Press "Enter" and your local clone will be created.
+- Install requirements from requirements.txt using the command "pip install -r requirements.txt". If working in a virtual environment, activate the virtual environment before running the command.
+- Create a env.py to store database url, secret key and cloudinary url.
+
+#### Fork
+To fork the repository:
+- Log in to Github and navigate to the repository of this project.
+- Click the button "Fork" in the top right corner to open dropdown menu and select "Create a new fork".
 
 ## Credits
 
