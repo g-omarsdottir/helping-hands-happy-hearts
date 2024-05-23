@@ -113,6 +113,7 @@ Desktop Version
 </details>
 
 ## Project planning
+
 ### Database Schema
 
 This project utilizes a relational database powered by [Neon.tech](https://neon.tech/), a serverless PostgreSQL solution.
@@ -122,7 +123,7 @@ The Entity Relationship Diagram (ERD, see below) was created using before starti
 Each Django model is represented with a table on the ERD along with its attributes and model fields.
 
 **Database Overview:**
-- **Key Features:** Stores user profile, user posts, and comments.
+- **Key Features:** Stores user posts, and comments.
 - **User Management:** The models utilize the Django Allauth User model.
 - **Content Management:** Users can create and update own content, interact with other users by commenting on and liking content and comments.
 - **Technical Design:** Separation of concern was implemented by deviding key components into individual Django Models *(see ERD)*. This allows for simple and reliable queries based on the primary key, as well as easy management and scalability.
@@ -135,7 +136,6 @@ Each Django model is represented with a table on the ERD along with its attribut
 ![Entity Relationship Diagram](/documentation/erd.png)
 </details>
 
-
 ### Agile Development Methods 
 - Epics
 - User Stories
@@ -145,20 +145,20 @@ Each Django model is represented with a table on the ERD along with its attribut
 ## Technology Used
 
 ### Libraries and Frameworks Used
-[Django v4.2.13](https://docs.djangoproject.com/en/5.0/releases/4.2.13/) - Python web framework
-[Django allauth](https://docs.allauth.org/en/latest/installation/index.html) - User account authentication and verification *(check: verif.)*
-[Django Crispy Forms v2.1](https://django-crispy-forms.readthedocs.io/en/latest/install.html#installing-django-crispy-forms) - Simplifies the creation of forms
-[Django ckeditor v6.7.1](https://pypi.org/project/django-ckeditor/) - Privides a handy richt text field widget for forms
-[Django RichTextField v1.6.2](https://djangopackages.org/packages/p/django-richtextfield/) - Renders a customizable rich text editor for user posts
-[Django Resized v1.0.2](https://pypi.org/project/django-resized/) - Handles resizing and format converting of images uploaded by users
-[Pillow v10.3.0](https://pillow.readthedocs.io/en/stable/) - A Python imaging library, handles images in combination with the Django Resized Image Field
-[Bootstrap v5.2.3](https://getbootstrap.com/docs/5.2/getting-started/download/) - Open-source CSS framework
-[Crispy-Bootstrap v5 2024.2](https://pypi.org/project/crispy-bootstrap5/) - Provides Bootstrap-specific classes and styles to render forms
-[Summernote v0.8.20.0](https://djangopackages.org/packages/p/django-summernote/) - Renders a customizable rich text editor for the admin panel
-[Autoslug](https://django-autoslug.readthedocs.io/_/downloads/en/stable/pdf/) - Automatically generates slug field for improved UX for less experienced users
-[cloudinary v1.36.0](https://cloudinary.com/documentation/django_integration) - Allows users to upload images
-[dj3-cloudinary-storage v0.0.6](https://cloudinary.com/documentation/rails_activestorage) - Provides storage of images uploaded by users
-[Black v24.4.2](https://black.readthedocs.io/en/stable/) - Formats code compliant to pep8 
+- [Django v4.2.13](https://docs.djangoproject.com/en/5.0/releases/4.2.13/) - Python web framework
+- [Django allauth](https://docs.allauth.org/en/latest/installation/index.html) - User account authentication and verification *(check: verif.)*
+- [Django Crispy Forms v2.1](https://django-crispy-forms.readthedocs.io/en/latest/install.html#installing-django-crispy-forms) - Simplifies the creation of forms
+- [Django ckeditor v6.7.1](https://pypi.org/project/django-ckeditor/) - Privides a handy richt text field widget for forms
+- [Django RichTextField v1.6.2](https://djangopackages.org/packages/p/django-richtextfield/) - Renders a customizable rich text editor for user posts
+- [Django Resized v1.0.2](https://pypi.org/project/django-resized/) - Handles resizing and format converting of images uploaded by users
+- [Pillow v10.3.0](https://pillow.readthedocs.io/en/stable/) - A Python imaging library, handles images in combination with the Django Resized Image Field
+- [Bootstrap v5.2.3](https://getbootstrap.com/docs/5.2/getting-started/download/) - Open-source CSS framework
+- [Crispy-Bootstrap v5 2024.2](https://pypi.org/project/crispy-bootstrap5/) - Provides Bootstrap-specific classes and styles to render forms
+- [Summernote v0.8.20.0](https://djangopackages.org/packages/p/django-summernote/) - Renders a customizable rich text editor for the admin panel
+- [Autoslug](https://django-autoslug.readthedocs.io/_/downloads/en/stable/pdf/) - Automatically generates slug field for improved UX for less experienced users
+- [cloudinary v1.36.0](https://cloudinary.com/documentation/django_integration) - Allows users to upload images
+- [dj3-cloudinary-storage v0.0.6](https://cloudinary.com/documentation/rails_activestorage) - Provides storage of images uploaded by users
+- [Black v24.4.2](https://black.readthedocs.io/en/stable/) - Formats code compliant to pep8 
 
 ### Programs Used
 [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
@@ -166,6 +166,36 @@ Each Django model is represented with a table on the ERD along with its attribut
 [Optimizilla](https://imagecompressor.com/) to compress image file size
 
 ## Features
+
+### Responsiveness
+
+- Responsiveness was obtained using minimal code and no mediaqueries using Bootstrap 5 grid system. Since this project is to showcase coding abilities using Django and less emphasis is layed on frontend styling, I took advantage of being able to further practise my Bootstrap skills and achieve for maximum responsiveness with minimum amount of code.
+
+### Security
+- The application prioritizes user data security and employs robust measures to safeguard against potential threats. This includes access control, and secure coding practices. Django’s built in authentication and validation of class-based models handles secure operation of CRUD functionalities elegantly and additional mixins prevent manipulation of content by other users in a concise and robust coding practise.
+- Authentication and Authorization: Signup and Login handles elegantly by Django Allauth
+- Data Validation and Sanitization: Form validation ensures data integrity and prevents unauthorized manipulation. 
+- Error Handling: customized error page guide users and provide informative messages in case of issues.
+- Environment Security: Sensitive information is protected with secure storage practices during development and deployment.
+- CSRF Protection: CSRF tokens provide an additional layer of security against unauthorized actions.
+
+### Future Features
+
+- Button to turn on amplified text for low vision people. Older people don't necessecarily know how to utilize assistive technology, so including a button for extra large text would be helpful.
+
+    <details>
+    <summary> Click for image</summary>
+
+    ![Low Vision Button](/documentation/future-feature.png)
+    </details>
+
+- User profiles for including a profile picture for improved user experience.
+- Bookmarks to save interesting user posts.
+- Website internal messaging between users, so they don't have to include their contact details on the website.
+- Add more visual user feedback using JavaScript to customize the layout further and improve user experience.
+- Search function.
+
+
 *Testing and Bugs (separate)*
 ## Deployment and Local Development
 
