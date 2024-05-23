@@ -44,6 +44,7 @@ ALLOWED_HOSTS = [
     "http://127.0.0.1",
     "8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net",
     "https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net",
+    ".herokuapp.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -98,6 +99,7 @@ DJRICHTEXTFIELD_CONFIG = {
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
