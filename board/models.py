@@ -16,7 +16,8 @@ AVAILABILITY_CHOICES = [
 
 TOOLS_REQUIRED = [
     ("I Have the Necessary Tools", "I Have the Necessary Tools"),
-    ("Tools Required - which I Do Not Have", "Tools Required - which I Do Not Have"),
+    ("Tools Required - which I Do Not Have",
+        "Tools Required - which I Do Not Have"),
     ("No Tools Required", "No Tools Required"),
 ]
 
@@ -106,7 +107,9 @@ class Post(models.Model):
         User, related_name="post_owner", on_delete=models.CASCADE
     )
     title = models.CharField(max_length=40, null=False, blank=False)
-    slug = AutoSlugField(populate_from="title", always_update=True, unique=True)
+    slug = AutoSlugField(
+        populate_from="title", always_update=True, unique=True
+    )
     excerpt = models.CharField(max_length=100, null=False, blank=False)
     content = RichTextField(max_length=5000, null=False, blank=False)
     published_date = models.DateTimeField(auto_now_add=True)

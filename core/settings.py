@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.",
+    "https://*.codeinstitute-ide.net",
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
 ]

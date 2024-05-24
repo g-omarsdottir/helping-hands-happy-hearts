@@ -82,15 +82,19 @@ class PostDetail(DetailView):
                 messages.success(request, "You have unliked this post.")
             else:
                 post.likes.add(request.user)
-                messages.success(request, "You have liked this post.")
-        return HttpResponseRedirect(reverse("post_detail", kwargs={"slug": post.slug}))
+                messages.success(
+                    request, "You have liked this post."
+                )
+        return HttpResponseRedirect(
+            reverse("post_detail", kwargs={"slug": post.slug})
+        )
 
 
 class AddPost(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     """
     Display Add Post view
-    LoginRequiredMixin checks if user is logged in before running CreateView
-    If user is not logged in and attempts to add post, it redirects user to login page
+    LoginRequiredMixin checks if user is logged in before running CreateView,
+        redirects user to login page, if user is not logged in
     CreateView handles form to add a post in the DOM
     Related to :model:`board.Post`
     **Context**
@@ -128,7 +132,8 @@ class EditPost(
 ):
     """
     Edit user's own content.
-    Utilizes Django's authentication system's mixins to secure edit of only own content.
+    Utilizes Django's authentication system's mixins
+        to secure edit of only own content
     Related to :model:`board.Post`
     **Context**
     ``post``
@@ -155,7 +160,7 @@ class EditPost(
     def form_valid(self, form):
         """
         Saves changes in form after editing.
-        Redirects to board after updating (like in codestar walkthrough project).
+        Redirects to board after updating.
         """
         response = super().form_valid(form)
         return response
@@ -177,8 +182,9 @@ class DeletePost(
 ):
     """
     Delete user's own content.
-    Utilizes Django's authentication system's mixins to secure deletion of only own content.
-    Utilizes Django's built-in deletion logic.
+    Utilizes Django's authentication system's mixins
+        to secure deletion of only own content
+    Utilizes Django's built-in deletion logic
     Related to :model:`board.Post`
     ***Template:***
     :template:`board/post_confirm_delete.html`
