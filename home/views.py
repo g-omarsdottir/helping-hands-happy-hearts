@@ -11,4 +11,5 @@ class Index(generic.TemplateView):
     ***Template:***
     :template:`index.html`
     """
+
     template_name = "home/index.html"
