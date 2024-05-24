@@ -36,12 +36,11 @@ ALLOWED_HOSTS = [
     "http://localhost",
     "http://127.0.0.1",
     "8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net",
-    "https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net",
     ".herokuapp.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.codeinstitute-ide.net",
+    "https://8000-gomarsdotti-helpinghand-kwy132gwplu.ws.",
     "https://*.gitpod.io",
     "https://*.herokuapp.com",
 ]
@@ -158,16 +157,20 @@ DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        "UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        "MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        "CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation."
+        "NumericPasswordValidator",
     },
 ]
 
