@@ -20,8 +20,11 @@
                         {% endif %}
                     </div>
                     <h1 class="text-center">{{ post.title }}</h1>
-                    <!-- Check: author defined in PostModel, delete if double. Check: edited_date -->
-                    <p class="text-center">Posted by {{ post.author }} on {{ post.published_date }}</p>
+                    {% if post.edited_date %}
+                        <p class="text-center">Posted by {{ post.author }}, edited on {{ post.edited_date }}</p>
+                    {% else %}
+                        <p class="text-center">Posted by {{ post.author }} on {{ post.published_date }}</p>
+                    {% endif %}
                     <hr>
                     <article class="card-text">
                         <ul class="list-group list-group-flush">
@@ -91,11 +94,11 @@
                 <div class="d-block p-2 likes-count">
                     <form method="post" action="{% url 'post_detail' slug=post.slug %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-info mb-2">
+                        <button type="submit" class="btn btn-info mb-4">
                             {% if request.user in post.likes.all %}
-                            Unlike
+                            Unlike this post
                             {% else %}
-                            Like
+                            Like this post
                             {% endif %}
                         </button>
                     </form>
@@ -105,89 +108,11 @@
                     </div>
                     {% endif %}
                 </div>
-                <!-- Displaying count of comments -->
-
-                <div class="d-block p-2 comment-count">
-                    <p>
-                        <strong">
-                            <i class="fa-solid fa-comments"></i> Number of comments: {{ comment_count }}</strong>
-                    </p>
-                </div>
             </div>
         </div>
     </div>
-
     <div class="d-flex justify-content-center align-items-center col-xs-8 col-s-6 mb-3">
         <a href="{% url 'board' %}" class="btn btn-secondary">&laquo; Return to Overview</a>
-    </div>
-    <hr>
-    <!-- Creating New Comments -->
-    <div class="container d-flex flex-column">
-        <div class="row">
-            <div class="justify-content-center col-md-6">
-                <div class="card form">
-                    <div class="card-header text-center font-weight-light">
-                        <h3>Leave a Comment:</h3>
-                    </div>
-                    <div class="card-body">
-                        {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'add_comment' post.id %}">
-                            {% csrf_token %}
-                            {{ form | crispy }}
-                            <div class=" text-center">
-                                <button type="submit" class="btn btn-info p-2">Submit Comment</button>
-                            </div>
-                        </form>
-                        {% else %}
-                        <div class="d-flex justify-content-center">
-                            <p>Log in to leave a comment</p>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Displaying Comments -->
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card form">
-                        <div class="card-header">
-                            <h3 class="text-center font-weight-light">Comments:</h3>
-                        </div>
-                        <div class="card-body">
-                            {% for comment in comments %}
-                            <div class="p-2">
-                                <p class="font-weight-bold">
-                                    {{ comment.author }} <span class="font-weight-normal">commented on
-                                        {{ comment.published_date }}</span>:
-                                </p>
-                                <div>
-                                    {{ comment.body | linebreaks }}
-                                </div>
-
-                                <!-- Check: Code like in codestar - but codestar did not use auth.mixins of class based views
-                        {% if user.is_authenticated and comment.author == user %}
-                        <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-                        {% endif %}
-                        -->
-                                {% if request.user == comment.author %}
-                                <div class="d-flex justify-content-center gap-2">
-                                    <a href="#" class="btn btn-warning col-xs-4 col-md-2">Edit</a>
-                                    <a href="#" class="btn btn-danger col-xs-4 col-md-2">Delete</a>
-                                </div>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex d-column justify-content-center align-items-center col-xs-8 col-s-6 mb-3">
-            <a href="{% url 'board' %}" class="btn btn-secondary">&laquo; Return to Overview</a>
-        </div>
     </div>
 </div>
 {% endblock %}
