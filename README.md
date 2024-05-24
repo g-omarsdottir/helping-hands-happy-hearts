@@ -285,7 +285,7 @@ To fork the repository:
 
 ## Credits
 
-- The content fo this project was written by me, Gudrun Omarsdottir.
+- The content for this project was written by me, Gudrun Omarsdottir.
 
 ### Content
 
