@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Bootstrap for responsive styles is applied in the respective html template */
+
+/* Root variables for colors and fonts */
+:root {
+    /* Colors */
+    --black: #333333;
+    --off-white: #F5F5F5;
+    --warm-white: #FEF9EF;
+    --coral: #F07167;
+    --blue: #227C9D;
+    --yellow: #FFCB77;
+
+    /* Box shadow and border styles */
+    /*border: 2px groove #227C9D
+    box-shadow: 0 3px 3px rgba(34, 124, 157, 0.75)*/
+    --blue-box-shadow: 1px -1px 7px 0 rgba(34, 124, 157, 0.75);
+    --black-box-shadow: 1px -1px 7px 0 #4E4A47;
+    --border: 1px solid #4E4A47;
+}
+
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Work Sans", sans-serif;
+    color: var(--black);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+main {
+    /* Push footer down */
+    flex: 1 0 auto;
+    background-color: var(--off-white);
+}
+
+/* Header -------------------------------------------------------------*/
+.navbar {
+    background-color: var(--off-white);
+    box-shadow: var(--black-box-shadow);
+}
+
+a.nav-link {
+    color: var(--black);
+    align-items: baseline; /* check */
+}
+
+img.logo {
+    width: 10rem;
+    /*flex-shrink: 0;  check */
+}
+
+.active {
+    border-bottom: 2px groove var(--blue);
+    font-weight: 500;
+}
+
+/* Main ---------------------------------------------------------------*/
+
+/* Board - Overview of Posts --------------- */ 
+.scale {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.posts {
+    height: 500px;
+    overflow: hidden;
+    color: var(--black);
+    box-shadow: var(--black-box-shadow);
+}
+
+.posts:hover {
+    cursor: pointer;
+    box-shadow: var(--blue-box-shadow);
+}
+
+/* Check: Box shadow for 3D "pressed effect" */
+/* 
+Explanation of values: 
+distance of shadow from element - blur/spread of shadow - no additional spread - color. 
+Same for definition of second shadow.
+*/
+.posts:active {
+    box-shadow: 0.1em 0.1em 0 var(--warm-white), 0.2em 0.2em var(--blue);
+}
+
+/* Board - Detailed View of Posts ---------- */
+.box {
+    box-shadow: var(--blue-box-shadow);
+}
+
+.blackbox {
+    box-shadow: var(--black-box-shadow);
+}
+
+.likes-count {
+    margin-left: 40px;
+}
+
+/* Forms Django allauth -------------------- */
+.form {
+    /*width: 100%;*/
+    margin: 20px auto;
+    box-shadow: var(--black-box-shadow);
+    border-radius: 10px;
+    display: block;
+}
+
+/* Footer -------------------------------------------------------------*/
+footer {
+    /* Stick footer to bottom */
+    flex-shrink: 0;
+    background-color: var(--coral);
+    border-top: 4px solid var(--yellow);
+}
+
+footer li a {
+    margin-right: 10px;
+}
