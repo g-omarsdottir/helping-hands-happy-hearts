@@ -5,8 +5,10 @@ from django.shortcuts import render
 # Create your views here.
 class Index(generic.TemplateView):
     """
-    Should be ListView, but that throws an error.
-    Reevaluate after creating Models.
+    Display the homepage
+    **Context**
+        ``page_title``
+    ***Template:***
+    :template:`index.html`
     """
-
     template_name = "home/index.html"
