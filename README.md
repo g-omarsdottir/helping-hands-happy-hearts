@@ -91,10 +91,20 @@ To contribute content and engage in conversations, the users must be logged in.
 </details>
 
 ### Wireframes
-Mobile Version
+
+#### Wireframes Mobile Version
+
 ![wireframes-mobile](/documentation/wireframes-mobile.png)
 
-Desktop Version
+<details>
+<summary>Click for wireframe Logged-In View - "Add Post"</summary>
+
+![mobile-loggedin](/documentation/mobile-loggedin.png)
+</details>
+
+
+#### Wireframes Desktop Version
+
 <details>
 <summary>Click for wireframe "Home"</summary>
 
@@ -117,6 +127,13 @@ Desktop Version
 <summary>Click for wireframe "Sign-In"</summary>
 
 ![sign-in](/documentation/sign-in.png)
+</details>
+
+
+<details>
+<summary>Click for wireframe Logged-In View - "Add Post"</summary>
+
+![desktop-loggedin](/documentation/desktop-loggedin.png)
 </details>
 
 ### Colors
@@ -157,16 +174,16 @@ Each Django model is represented with a table on the ERD along with its attribut
 
 ### Agile Development Methods 
 
-Epics
+#### Epics
 - Epics are the main goals and features of the project that can be broken down into smaller tasks called user stories. Each epic can have multiple user stories.
 
-User Stories
+#### User Stories
 - User stories describe the features from an epic in more and from the user's perspective. They start with "As a [role] I can [capability] so that [received benefit]". Each user story has a clear goal, which is explained in detail in the acceptance criteria. The acceptance criteria describe the requirements to fulfill the feature of the user story.
 
-MoSCoW Prioritization
+#### MoSCoW Prioritization
 - A handy method to categorize features based on urgency and necessity. The acronym stands for Must Have, Should Have, Could Have, and Won't Have. This method helps decide which features are absolutely necessary for the current iteration, which ones could be added if time permits, and which ones might be postponed indefinitely. The MoSCoW prioritazion was defined using labels on each user story.
 
-Kanban board
+#### Kanban board
 - A visual tool in agile project management. It visually represents the workflow stages and the status of individual user stories. The Kanban board for this project can be viewed [here](https://github.com/users/g-omarsdottir/projects/4).
 
 ## Technology Used
@@ -194,10 +211,11 @@ In addition to libraries and frameworks already installed in the Code Institute 
 - [dj-database-url v0.5.0](https://pypi.org/project/dj-database-url/0.5.0/) - Django utility allows to utilize the 12factor inspired DATABASE_URL environment variable to configure the Django application
 
 ### Programs Used
-[diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
-[Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) to convert images into webp format
-[Optimizilla](https://imagecompressor.com/) to compress image file size
-[Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
+- [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
+- [balsamiq](https://balsamiq.com/?gad_source=1&gclid=CjwKCAjw9cCyBhBzEiwAJTUWNUqgDLXtJBfd_25tyqofGEHLEm5fRfDXTwm6E25bZFvYSqIkYfaZnRoCLFUQAvD_BwE) to create the wireframes
+- [Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) to convert images into webp format
+- [Optimizilla](https://imagecompressor.com/) to compress image file size
+- [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
 
 ## Features
 
