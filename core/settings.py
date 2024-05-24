@@ -28,14 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-""" 
-Checks for a constant in env.py, which is not pushed and thus not deployed. 
-If the os finds the constant, it means the code is in development and sets DEBUG to True.
-If os does not find the constant, it sets DEBUG to False.
-This way, humar error and security related mistakes can be avoided.
-Setting it as an if else statement for better readability.
-"""
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
