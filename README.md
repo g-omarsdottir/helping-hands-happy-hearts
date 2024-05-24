@@ -197,13 +197,20 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 - Responsiveness was obtained using minimal code and no mediaqueries using Bootstrap 5 grid system. Since this project is to showcase coding abilities using Django and less emphasis is layed on frontend styling, I took advantage of being able to further practise my Bootstrap skills and achieve for maximum responsiveness with minimum amount of code.
 
+### User Feedback to CRUD functunalites
+
+- The user is informed of every successful creation, update or delete action with an alert message. The alert messages are elegantly provided with the Django utily SuccessMessageMixin.
+
 ### Security
-- The application prioritizes user data security and employs robust measures to safeguard against potential threats. This includes access control, and secure coding practices. Django’s built in authentication and validation of class-based models handles secure operation of CRUD functionalities elegantly and additional mixins prevent manipulation of content by other users in a concise and robust coding practise.
-- Authentication and Authorization: Signup and Login handles elegantly by Django Allauth
-- Data Validation and Sanitization: Form validation ensures data integrity and prevents unauthorized manipulation. 
-- Error Handling: customized error page guide users and provide informative messages in case of issues.
-- Environment Security: Sensitive information is protected with secure storage practices during development and deployment.
-- CSRF Protection: CSRF tokens provide an additional layer of security against unauthorized actions.
+
+The application prioritizes user data security and employs robust measures to safeguard against potential threats. This includes access control, and secure coding practices. 
+- **CRUD functunalities:** Django’s built in authentication and validation of class-based views handles secure operation of CRUD functionalities elegantly and additional mixins prevent manipulation of content by other users in a concise and robust coding practise. Django's class-based views to view, delete and edit in combination Dango's authentication system's mixins LoginRequiredMixin and UserPassesTestMixin handle elegantly user actions and prevent if not authenticated not logged in by redirecting the user to the login page. 
+- **Authentication and Authorization:** Signup and Login handles elegantly by Django Allauth.
+- **Data Validation and Sanitization:** Form validation ensures data integrity and prevents unauthorized manipulation.
+- **Error Handling:** customized error page guide users and provide informative messages in case of issues.
+- **Environment Security:** Secure handling of sensitive data is prioritized throughout the development and deployment phases. This involves storing critical information such as database URLs, secret keys, and Cloudinary URLs securely. During development, these details are stored in a private .env.py file, excluded from version control via .gitignore. In production, they are managed as configurable variables, enhancing security by disabling debug mode.
+- **CSRF Protection:** The application employs CSRF protection measures to safeguard against unauthorized activities. CSRF tokens are seamlessly integrated into every form submission, bolstering the security posture.
+- **Handling RichTextFields:** While adhering to standard security protocols, I encountered a nuanced challenge with RichTextFields in forms intended for posting content. Without explicitly marking the form field as safe, the user's desired styling cannot be applied. Addressing this issue elegantly remains a learning curve for me as a novice web developer.
 
 ### Future Features
 
