@@ -23,9 +23,10 @@ Project planning
     - MoSCoW Prioritization
     - Kanban board
 Features
-*Testing and Bugs (separate)*
 Deployment and Local Development
 Credits
+
+Testing and Bugs are documented in the separate file [TESTING.md](TESTING.md)
 
 ## Introduction
 
