@@ -22,7 +22,7 @@
 </div>
 <div class="container d-flex flex-row flex-wrap justify-content-center p-2 d-grid gap-3">
     {% for post in board %}
-    <a href="{% url 'post_detail' post.slug %}" aria-label="Click to view detailed post {{post.title}}"
+    <a href="{% url 'post_detail' post.slug %}" aria-label="Click to view detailed post with the title: {{post.title}}"
         class="text-decoration-none">
         <article>
             <div class="card posts" style="width: 18rem;">
@@ -30,7 +30,7 @@
                 <img src="{{ post.post_image.url }}" class="card-img-top scale" alt="image for post {{ post.title }}">
                 {% else %}
                 <img src="{% static 'images/placeholder.webp' %}" class="card-img-top scale"
-                    alt="placeholder post image of hands forming a heart">
+                    alt="Default hero image featuring hands forming a heart shape; intended for use when no custom image is uploaded">
                 {% endif %}
                 <div class="card-body d-flex flex-column justify-content-between">
                     <ul class="list-group list-group-flush">

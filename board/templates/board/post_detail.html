@@ -15,7 +15,7 @@
                         <img src="{{ post.post_image.url }}" alt="image for post {{ post.title }}" class="img-fluid">
                         {% else %}
                         <img src="{% static 'images/placeholder.webp' %}"
-                            alt="placeholder post image of hands forming a heart" class="img-fluid">
+                            alt="Default hero image featuring hands forming a heart shape; intended for use when no custom image is uploaded" class="img-fluid">
                         {% endif %}
                     </div>
                     <h2 class="text-center p-2 mt-3"><strong>{{ post.title }}</h2></strong>
