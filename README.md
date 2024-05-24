@@ -5,7 +5,7 @@ This project is a digital "pay it forward board" connecting those who need help 
 We believe everyone wins when small acts of kindness become part of our daily routines. This platform offers a convenient channel to connect with neighbors within our fast-paced modern society.
 
 Mockup
-You can view the live project here (link to deployed website)
+You can view the live project here [Helping Hands, Happy Hearts](https://helping-hands-happy-hearts-546cab7eb98a.herokuapp.com/)<br>
 *(To open in a new window, press "ctrl" (or ⌘ for Mac) + click on the link)*
 
 ## Table of contents
@@ -156,10 +156,18 @@ Each Django model is represented with a table on the ERD along with its attribut
 </details>
 
 ### Agile Development Methods 
-- Epics
-- User Stories
-- MoSCoW Prioritization
-- Kanban board
+
+Epics
+- Epics are the main goals and features of the project that can be broken down into smaller tasks called user stories. Each epic can have multiple user stories.
+
+User Stories
+- User stories describe the features from an epic in more and from the user's perspective. They start with "As a [role] I can [capability] so that [received benefit]". Each user story has a clear goal, which is explained in detail in the acceptance criteria. The acceptance criteria describe the requirements to fulfill the feature of the user story.
+
+MoSCoW Prioritization
+- A handy method to categorize features based on urgency and necessity. The acronym stands for Must Have, Should Have, Could Have, and Won't Have. This method helps decide which features are absolutely necessary for the current iteration, which ones could be added if time permits, and which ones might be postponed indefinitely. The MoSCoW prioritazion was defined using labels on each user story.
+
+Kanban board
+- A visual tool in agile project management. It visually represents the workflow stages and the status of individual user stories. The Kanban board for this project can be viewed [here](https://github.com/users/g-omarsdottir/projects/4).
 
 ## Technology Used
 
