@@ -226,8 +226,12 @@ In addition to libraries and frameworks already installed in the Code Institute 
 - A limited color palette is used to avoid visual clutter.
 - Navigation elements (links and buttons) are prominently placed and clearly labeled.
 - The user’s current location on the website is always indicated.
+- Users are given full control with buttons to return to overview, add post by clicking a button without scrolling to navigation bar directly under the overview of posts. 
+- If a user wants to delete a post, the user has the option to cancel the deletion and return to the post without deleting.
 
 ![navbar](/documentation/navbar.png)
+
+![return](/documentation/feature-return.png)
 
 ### Informative Homepage:
 
@@ -322,7 +326,7 @@ The application prioritizes user data security and employs robust measures to sa
     ![Low Vision Button](/documentation/future-feature.png)
     </details>
 
-- User profiles for including a profile picture for improved user experience.
+- User profiles for including a profile picture for improved user experience. The model field for saving post as a draft or publish directly can easily be implemented at a later time, since it is present in the database and set to default=publish, and is not displayed to users so it doesn't cause confusion at the time being.
 - Bookmarks to save interesting user posts.
 - Website internal messaging between users, so they don't have to include their contact details on the website.
 - Add more visual user feedback using JavaScript to customize the layout further and improve user experience.
