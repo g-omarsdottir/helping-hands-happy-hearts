@@ -40,12 +40,9 @@
                         <li class="list-group-item">
                             <h3 class="card-subtitle">{{ post.category }}</h3>
                         </li>
-                        <!-- if: Leaves field empty if no content -->
-                        {% if post.availability %}
                         <li class="list-group-item">
                             <h4 class="card-subtitle">{{ post.subcategory }}</h4>
                         </li>
-                        {% endif %}
                         <li class="list-group-item excerpt">
                             <p class="card-text">{{post.excerpt|truncatechars:50}}.</p>
                         </li>
