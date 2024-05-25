@@ -4,7 +4,8 @@ This project is a digital "pay it forward board" connecting those who need help 
 
 We believe everyone wins when small acts of kindness become part of our daily routines. This platform offers a convenient channel to connect with neighbors within our fast-paced modern society.
 
-Mockup
+![Mockup](/documentation/mockup.png)
+
 You can view the live project here [Helping Hands, Happy Hearts](https://helping-hands-happy-hearts-546cab7eb98a.herokuapp.com/)<br>
 *(To open in a new window, press "ctrl" (or ⌘ for Mac) + click on the link)*
 
@@ -36,6 +37,7 @@ The project can be a great platform to include in the local schools to nourish t
 Social Media influencers have a bounty of opportunities to create content and boost their number of followers and likes on their posts without much effort. They can pick and choose according to what image they are seeking to convey on their own platform. There’s no denying that helping for the sake of helping is more noble, but we all know that there is no such thing a selfless good deed, even if the win is only to feel good, so why not make the most of it. It’s a win-win for everyone involved.
 
 ## Project Goal
+
 -	**Combining Convenience with Compassion:** To make it easy to offer or request help without long-term commitments or awkward direct requests.
 -	**Bridging Gaps:** Lack of technology skills or a social network, physical limitations, or simple lack of time may create barriers. Our platform fosters connections to overcome these.
 -	**Community Spirit:** From dog walking to gardening, or tech help to tutoring, the platform empowers neighbors to support each other in diverse ways.
@@ -54,6 +56,7 @@ Social Media influencers have a bounty of opportunities to create content and bo
 -	Parents who want to foster kindness and community engagement in their children, while spending quality time together.
 
 ### First Time Visitors Goals
+
 As a first time user I can
 - Browse a wide range of help requests and offered services.
 - Discover the variety of ways they can contribute or find assistance.
@@ -61,6 +64,7 @@ As a first time user I can
 
 
 ### Returning Visitors Goals
+
 As a returning visitor, I want to
 - Regularly check for relevant offers that address my current needs.
 - Easily find new opportunities to offer help that match my skills.
@@ -68,6 +72,7 @@ As a returning visitor, I want to
 
 
 ### Frequent Visitors Goals
+
 As a frequent visitor, I want to
 - Search for new offers and requests.
 - Feel connected to a kind and caring community.
@@ -75,6 +80,7 @@ As a frequent visitor, I want to
 ## Design
 
 ### Layout
+
 The layout of the website is devided into an area accessible to all and area exclusively for logged-in users. 
 
 For better user experience and uncertainty avoidance about what the project is about, hesitance to sign up, and to able older people with little computer skills to be able to take advantage of what the platform has to offer, the website's content is visible to all. This area contains the Hompage, the Offers & Requests page (Offers and Requests), the Sign-In page, and the Sign-Up page.
@@ -172,15 +178,19 @@ Each Django model is represented with a table on the ERD along with its attribut
 ### Agile Development Methods 
 
 #### Epics
-- Epics are the main goals and features of the project that can be broken down into smaller tasks called user stories. Each epic can have multiple user stories.
+
+- Epics are the main goals and features of the project that can be broken down into smaller tasks called user stories. Each epic can have multiple user stories. The epics can be viewed on this project's Kanban board (see below).
 
 #### User Stories
-- User stories describe the features from an epic in more and from the user's perspective. They start with "As a [role] I can [capability] so that [received benefit]". Each user story has a clear goal, which is explained in detail in the acceptance criteria. The acceptance criteria describe the requirements to fulfill the feature of the user story.
+
+- User stories describe the features from an epic in more and from the user's perspective. They start with "As a [role] I can [capability] so that [received benefit]". Each user story has a clear goal, which is explained in detail in the acceptance criteria. The acceptance criteria describe the requirements to fulfill the feature of the user story. The user stories can be viewed on this project's Kanban board (see below).
 
 #### MoSCoW Prioritization
-- A handy method to categorize features based on urgency and necessity. The acronym stands for Must Have, Should Have, Could Have, and Won't Have. This method helps decide which features are absolutely necessary for the current iteration, which ones could be added if time permits, and which ones might be postponed indefinitely. The MoSCoW prioritazion was defined using labels on each user story.
+
+- A handy method to categorize features based on urgency and necessity. The acronym stands for Must Have, Should Have, Could Have, and Won't Have. This method helps decide which features are absolutely necessary for the current iteration, which ones could be added if time permits, and which ones might be postponed indefinitely. The MoSCoW prioritazion was defined using labels on each user story (see Kanban board, below).
 
 #### Kanban board
+
 - A visual tool in agile project management. It visually represents the workflow stages and the status of individual user stories. The Kanban board for this project can be viewed [here](https://github.com/users/g-omarsdottir/projects/4).
 
 ## Technology Used
@@ -208,11 +218,14 @@ In addition to libraries and frameworks already installed in the Code Institute 
 - [dj-database-url v0.5.0](https://pypi.org/project/dj-database-url/0.5.0/) - Django utility allows to utilize the 12factor inspired DATABASE_URL environment variable to configure the Django application
 
 ### Programs Used
+
 - [diagrams.net](https://app.diagrams.net/) to create the layout flowchart and the database ERD
 - [balsamiq](https://balsamiq.com/?gad_source=1&gclid=CjwKCAjw9cCyBhBzEiwAJTUWNUqgDLXtJBfd_25tyqofGEHLEm5fRfDXTwm6E25bZFvYSqIkYfaZnRoCLFUQAvD_BwE) to create the wireframes
 - [Pixelied](https://pixelied.com/convert/jpg-converter/jpg-to-webp) to convert images into webp format
 - [Optimizilla](https://imagecompressor.com/) to compress image file size
 - [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
+- [Techsini.com](https://techsini.com/multi-mockup/index.php) to create the mockup for this README
+- [Chrome Extension Ignor X-Frame headers](https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe) to be able to create a mockup on Techsini from a django project
 
 ## Features
 
@@ -239,6 +252,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 ![feature-welcome](/documentation/feature-welcome.png)
 
 ![feature-contact](/documentation/feature-contact.png)
+
 ![feature-email](/documentation/feature-email.png)
 
 ### Sign-Up and Sign-In
@@ -253,6 +267,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 ![feature-signup](/documentation/feature-signup.png)
 
 ### Create Post
+
 - A clearly visible "Create Post" link and button provide easy access to post creation.
 - A user-friendly form allows adding relevant information like title, description, category, and location.
 - Required fields are marked with an asterisk (*) for clear guidance.
@@ -298,7 +313,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ### Responsiveness
 
-- Responsiveness was obtained using minimal code and no mediaqueries using Bootstrap 5 grid system. Since this project is to showcase coding abilities using Django and less emphasis is layed on frontend styling, I took advantage of being able to further practise my Bootstrap skills and achieve for maximum responsiveness with minimum amount of code.
+- Responsiveness on all screensizes was obtained using minimal code and no mediaqueries using Bootstrap 5 grid system. Since this project is to showcase coding abilities using Django and less emphasis is layed on frontend styling, I took advantage of being able to further practise my Bootstrap skills and achieve for maximum responsiveness with minimum amount of code.
 
 ### Security
 
@@ -378,6 +393,7 @@ To clone the repository:
 - Create a env.py to store database url, secret key and cloudinary url.
 
 #### Fork
+
 To fork the repository:
 - Log in to Github and navigate to the repository of this project.
 - Click the button "Fork" in the top right corner to open dropdown menu and select "Create a new fork".
@@ -398,16 +414,19 @@ To fork the repository:
 
 ### Imagery
 
+- [Favicon by surang](https://www.flaticon.com/free-icons/charity")
 - [Dani Guitarra on Unsplash](https://unsplash.com/photos/persons-hand-forming-heart-7JbUsmYPwP8) - for main website and default placeholder image
 - [Daniel Watson on Unsplash](https://unsplash.com/photos/green-and-black-lawnmower-on-green-grass-8vBpYpTGo90)
 - [sabinevanerp on Pixabay, 1:](https://pixabay.com/photos/woman-indoors-people-grown-up-hand-3188750/),[2:](https://pixabay.com/users/sabinevanerp-2145163/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3188745)
 - [Bjørnar Kibsgaard on Pixabay](https://pixabay.com/users/bjokib-6383051/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7917641)
 - [JackieLou DL on Pixabay](https://pixabay.com/photos/dog-walk-snow-shetland-sheepdog-6000001/)
-- [Favicon by surang](https://www.flaticon.com/free-icons/charity")
+- [John Schnobrich on Unsplash](https://unsplash.com/photos/person-using-laptop-FlPc9_VocJ4)
+- [Andras Vas on Unsplash](https://unsplash.com/photos/macbook-pro-turned-on-Bd7gNnWJBkU)
 
 ### Acknowledgements
 
+- My mentor, Mitko Bachvarov, for his guidance and encouragement.
 - My fellow students at Code Institute, especially [Niclas Hugdahl](https://github.com/NiclO1337) and [Amir Schkolnik](https://github.com/AmirShkolnik), for guidance, inspiration, testing and proofreading.
 - My Code Institute class facilitator, Kristyna Wach, for her cheerful motivation and encouragement.
-- My mentor, Mitko Bachvarov for his guidance.
 - Slack community for support and advice.
+- Stackoverflow community for information.
