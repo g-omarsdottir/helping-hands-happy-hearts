@@ -128,7 +128,6 @@ All testing for HTML was performed on the deployed website.
 ![html](/documentation/testing/html.png)
 </details>
 
-
 ### CSS
 
 No errors were detected when passing through the official [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS.
@@ -231,11 +230,18 @@ There are no unsolved bugs in the deployed project.
 
 ### Solved Bugs
 
-As a beginner developer, this project prioritized to learn developing using Django and involved a lot of trial and error. Due to the project's scope and time constraints, a dedicated bug tracking system was not implemented during development. However, a rigorous testing approach was employed to identify and resolve potential issues.
+All identified and fixed bugs are thoroughly documented within the associated commit messages. This provides a clear record of the development process and ensures traceability for future reference. 
 
-**Transparency in Commits:** All identified and fixed bugs are thoroughly documented within the associated commit messages. This provides a clear record of the development process and ensures traceability for future reference. 
-
-For future iterations, a dedicated bug tracking system will be implemented for more comprehensive issue management utilizing the Agile Development Methods Kanban Board for a detailed overview.
+| Bug                                               | Description                                                                              | Solution Applied                                                                                                                                                       | Result |
+|---------------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Active class on navigation items                  | Active class underline to indicate users location on website not displaying on two items | Fix typo in url_name in header template                                                                                                                                | Solved |
+| Active class on navigation item Offers & Requests | Active class underline to indicate users location on website not displaying              | Add missing quotation mark                                                                                                                                             | Solved |
+| Redirect urls                                     | Not performing consistently due to other changes in code                                 | Import reverse_lazy and replace hardcoded success URLs with reverse_lazy calls                                                                                         | Solved |
+| Delete Post                                       | Error at submission of form                                                              | Fix form on post_confirm_delete.html from action=post to method=POST to implement the DeleteView correctly                                                             | Solved |
+| Default post_image                                | Error on page load if no image uploaded by user                                          | Fix logic for placeholder image on post_detail.html by first checking if there is an uploaded user image on the post, instead of checking for placeholder in image url | Solved |
+| No post_image uploaded                            | Error at submission of form                                                              | Add method to view to first save form without submitting to handle optional image upload                                                                               | Solved |
+| CloudinaryField                                   | Forced fetched format not working                                                        | Change Field to ResizedImageField                                                                                                                                      | Solved |
+| Location list tuples                              | Error due to incorrect code                                                              | Add missing commas                                                                                                                                                     | Solved |
 
 ## Programs Used for this TESTING.md
 
