@@ -14,9 +14,12 @@ You can read the documentation in the [README.md](README.md)
     - [CSS](#css)
     - [Lighthouse Testing](#lighthouse-testing)
     - [WAVE Web Accessibility Evaluation Tool](#wave-web-accessibility-evaluation-tool)
+    - [Coolors contrast checker](#coolors-color-contrast-checker)
 - [Manual Testing](#manual-testing)
+    - [Browser Compatibility](#browser-compatibility)
+    - [Responsiveness](#responsiveness-testing)
 - [Bugs](#bugs)
-- [Programs Used](#programs-used)
+- [Programs Used](#programs-used-for-this-testingmd)
 
 ## Automated Testing
 
@@ -157,6 +160,12 @@ Alerts arise on overview of posts in Offers & Requests. The bootstrap cards are 
 
 Contrast errors are due to insufficient contrast of links in Django Allauth templates.
 
+#### Coolors Color Contrast Checker
+
+[Coolors Color Contrast Checker](https://coolors.co/contrast-checker/333333-f5f5f5) was used to validate color contrast for web accessability in terms of readability.
+
+![contrast](/documentation/contrast.png)
+
 ### Manual Testing
 
 | Feature                    | Action                                                                         | Outcome                                                                   | Result  |
@@ -195,6 +204,18 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 | Contact details site owner | Click on email link                                                            | Opens in default email app                                                | success |
 
 
+#### Browser Compatibility
+
+The browser compatibility was tested on the deployed project on Chrome, Microsoft Edge, Apple Safari and Mozilla Firefox. The manual testing table above was performed on all browsers to ensure good user experience regardless of the browser used.
+
+#### Responsiveness Testing
+
+![mockup-min](/documentation/testing/mockup-min.png)
+
+The responsiveness was tested on Chrome Developer Tools as well as by friends and family on various devices and screensizes. 
+
+Responsiveness was obtained primarily by utilizing Bootstrap 5 grid system. This made media queries in css stylesheet unnecessary and allowed for concise code and constistent performance in responsiveness.
+
 ## Bugs
 
 ### Unsolved Bugs 
@@ -209,11 +230,12 @@ As a beginner developer, this project prioritized to learn developing using Djan
 
 For future iterations, a dedicated bug tracking system will be implemented for more comprehensive issue management utilizing the Agile Development Methods Kanban Board for a detailed overview.
 
-## Programs Used
+## Programs Used for this TESTING.md
 
 - [Python Linter Validator]( https://pep8ci.herokuapp.com/) provided by the Code Institute according to the PEP 8 style guide for validating the Python code.
 - [World Wide Web Consortium's validator](https://validator.w3.org/) was used for validating the HTML code.
 - [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS stylesheet.
 - Chrome Developer Tools for Lighthouse Report.
 - [Wave WebAIM Validator](https://wave.webaim.org/) was used to validate web accessibility on the deployed website.
+- [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
 - [Table-magic](https://stevecat.net/table-magic/) - to create manual testing for this TESTING.md

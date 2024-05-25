@@ -226,6 +226,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 - [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
 - [Techsini.com](https://techsini.com/multi-mockup/index.php) to create the mockup for this README
 - [Chrome Extension Ignor X-Frame headers](https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe) to be able to create a mockup on Techsini from a django project
+- [Canva](https://www.canva.com/) to create the website logo
 
 ## Features
 
