@@ -7,8 +7,7 @@ You can read the documentation in the [README.md](README.md)
 
 ## Table of contents
 
-- [Automated Testing](#automated-testing)
-    - [Validator Testing](#validator-testing)
+- [Validator Testing](#validator-testing)
     - [Python](#python)
     - [HTML](#html)
     - [CSS](#css)
@@ -21,11 +20,9 @@ You can read the documentation in the [README.md](README.md)
 - [Bugs](#bugs)
 - [Programs Used](#programs-used-for-this-testingmd)
 
-## Automated Testing
+## Validator Testing
 
-### Validator Testing
-
-#### Python
+### Python
 
 [Python Linter Validator]( https://pep8ci.herokuapp.com/) provided by the Code Institute according to the PEP 8 style guide for validating the Python code.
 
@@ -113,7 +110,7 @@ You can read the documentation in the [README.md](README.md)
     </details>
     <br>
 
-#### HTML
+### HTML
 
 [World Wide Web Consortium's validator](https://validator.w3.org/) was used for validating the HTML code by URI input as well as loading the source code of each page from the browser by direct input into the validator. The source code is used to validate the Django template tags as HTML code.
 
@@ -132,7 +129,7 @@ All testing for HTML was performed on the deployed website.
 </details>
 
 
-#### CSS
+### CSS
 
 No errors were detected when passing through the official [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS.
 
@@ -142,7 +139,17 @@ No errors were detected when passing through the official [World Wide Web Consor
 ![css](/documentation/testing/css.png)
 </details>
 
-#### Lighthouse Testing
+### JavaScript
+
+The JavaScript passed without errors through the [JSHint Validator, a JavaScript Code Quality Tool](https://jshint.com/). 
+
+<details>
+<summary>Click for image JavaScript validator testing</summary>
+
+![css](/documentation/testing/jshint.png)
+</details>
+
+### Lighthouse Testing
 
 All Lighthouse testing was performed on the deployed website using Chrome Developer Tools Lighthouse Report.
 
@@ -150,7 +157,7 @@ All Lighthouse testing was performed on the deployed website using Chrome Develo
 
 ![Lighthouse desktop](/documentation/testing/lighthouse-mobile.png)
 
-#### WAVE Web Accessibility Evaluation Tool
+### WAVE Web Accessibility Evaluation Tool
 
 [Wave WebAIM Validator](https://wave.webaim.org/) was used to validate web accessibility on the deployed website.
 
@@ -160,13 +167,13 @@ Alerts arise on overview of posts in Offers & Requests. The bootstrap cards are 
 
 Contrast errors are due to insufficient contrast of links in Django Allauth templates.
 
-#### Coolors Color Contrast Checker
+### Coolors Color Contrast Checker
 
 [Coolors Color Contrast Checker](https://coolors.co/contrast-checker/333333-f5f5f5) was used to validate color contrast for web accessability in terms of readability.
 
 ![contrast](/documentation/contrast.png)
 
-### Manual Testing
+## Manual Testing
 
 | Feature                    | Action                                                                         | Outcome                                                                   | Result  |
 |----------------------------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------|---------|
@@ -204,11 +211,11 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 | Contact details site owner | Click on email link                                                            | Opens in default email app                                                | success |
 
 
-#### Browser Compatibility
+### Browser Compatibility
 
 The browser compatibility was tested on the deployed project on Chrome, Microsoft Edge, Apple Safari and Mozilla Firefox. The manual testing table above was performed on all browsers to ensure good user experience regardless of the browser used.
 
-#### Responsiveness Testing
+### Responsiveness Testing
 
 ![mockup-min](/documentation/testing/mockup-min.png)
 
@@ -235,7 +242,8 @@ For future iterations, a dedicated bug tracking system will be implemented for m
 - [Python Linter Validator]( https://pep8ci.herokuapp.com/) provided by the Code Institute according to the PEP 8 style guide for validating the Python code.
 - [World Wide Web Consortium's validator](https://validator.w3.org/) was used for validating the HTML code.
 - [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS stylesheet.
+- [[JSHint Validator, a JavaScript Code Quality Tool](https://jshint.com/)] for JavaScript script.
 - Chrome Developer Tools for Lighthouse Report.
 - [Wave WebAIM Validator](https://wave.webaim.org/) was used to validate web accessibility on the deployed website.
-- [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility
-- [Table-magic](https://stevecat.net/table-magic/) - to create manual testing for this TESTING.md
+- [Coolor Color Contract Checker](https://coolors.co/contrast-checker/333333-f5f5f5) to assess contrast for accessibility.
+- [Table-magic](https://stevecat.net/table-magic/) - to create manual testing for this TESTING.md.
