@@ -31,7 +31,7 @@
     {% if messages %}
     {% for message in messages %}
     <div>
-        <div class="row justify-content-center">
+        <div id="alert-container" class="row justify-content-center">
             <div class="col-xs-8 col-lg-4">
                 <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
                     {{ message }}
@@ -48,8 +48,30 @@
 
     </main>
     {% include 'includes/footer.html' %}
+    
+    {% block extra_scripts %}
     <!-- Fontawesome Kit -->
     <script src="https://kit.fontawesome.com/c62380739e.js" crossorigin="anonymous"></script>
+    
+    <!-- Timeout function for alert success messages -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            let alertContainer = document.getElementById('alert-container');
+
+            if (alertContainer) {
+                var alert = alertContainer.querySelector('.alert');
+                
+                setTimeout(function() {
+                    alert.classList.add('fade-out');
+                    alert.addEventListener('animationend', function() {
+                        alert.remove();
+                    });
+                }, 7000);
+            };
+        });
+    </script>
+    {% endblock %}
 </body>
 
 </html>

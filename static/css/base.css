@@ -80,6 +80,16 @@ img.logo {
 
 /* Main ---------------------------------------------------------------*/
 
+/* Alerts - Success Messages for User Feedback */
+/*Timed fade-out using JavaScript*/
+.alert-dismissible {
+    transition: opacity 0.5s ease-out;
+}
+  
+.fade-out {
+    opacity: 0;
+}  
+
 /* Board - Overview of Posts --------------- */ 
 .scale {
     width: 100%;
