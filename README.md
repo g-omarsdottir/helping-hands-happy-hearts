@@ -350,6 +350,7 @@ The application prioritizes user data security and employs robust measures to sa
 - Website internal messaging between users, so they don't have to include their contact details on the website.
 - Add more visual user feedback using JavaScript to customize the layout further and improve user experience.
 - Search function.
+- Implement and utilize all Django Allauths functions, like password retrieval.
 
 ## Deployment and Local Development
 
