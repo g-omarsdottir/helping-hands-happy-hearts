@@ -195,6 +195,13 @@ Each Django model is represented with a table on the ERD along with its attribut
 
 ## Technology Used
 
+### Languages Used
+
+- Python
+- HTML
+- CSS
+- JavaScript
+
 ### Libraries and Frameworks Used
 
 In addition to libraries and frameworks already installed in the Code Institute template:
