@@ -133,7 +133,7 @@ class Post(models.Model):
         Subcategory,
         related_name="post_subcategory",
         null=True,
-        blank=True,
+        blank=False,
         on_delete=models.SET_NULL,
     )
     post_image = ResizedImageField(
