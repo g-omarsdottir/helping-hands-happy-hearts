@@ -60,7 +60,7 @@
             let alertContainer = document.getElementById('alert-container');
 
             if (alertContainer) {
-                var alert = alertContainer.querySelector('.alert');
+                let alert = alertContainer.querySelector('.alert');
                 
                 setTimeout(function() {
                     alert.classList.add('fade-out');
@@ -68,7 +68,7 @@
                         alert.remove();
                     });
                 }, 7000);
-            };
+            }
         });
     </script>
     {% endblock %}
