@@ -157,3 +157,38 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 
 ### Manual Testing
 
+| Feature                    | Action                                                                         | Outcome                                                                   | Result  |
+|----------------------------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------|---------|
+| Sign-Up                    | Click Sign Up on navbar                                                        | Form for email  username password                                         | success |
+| Sign-Up                    | User Feedback                                                                  | Success message including username displayed                              | success |
+| Sign-In                    | Click on Sign-In on navbar                                                     | Login form displayed                                                      | success |
+| Sign-In                    | User Feedback                                                                  | Success message including username displayed                              | success |
+| Sign-In                    | Enter incorrect credentials                                                    | Error message for invalid login                                           | success |
+| Create Post                | Click Create Post on navbar or button                                          | Login to create post displayed                                            | success |
+| Create Post                | Submit empty form or leave out required fields marked with asterisk            | Error message and no submission                                           | success |
+| Create Post                | Fill form                                                                      | Publish post immedately                                                   | success |
+| Create Post                | Style post using RichTextField                                                 | Styled post published                                                     | success |
+| Create Post                | Click on calender widget                                                       | Choose a target date from calender                                        | success |
+| Create Post                | Click on fields with dropdown menu                                             | User can choose options for fields from dropdown menus                    | success |
+| Create Post                | User Feedback                                                                  | Success message add post                                                  | success |
+| Read Post                  | Go to Offers & Requests page                                                   | List of posts (newest first)                                              | success |
+| Read Post                  | Click on post on overview board offers and requests                            | correct post opens displaying all details                                 | success |
+| Read Post                  | Click on button return to overview                                             | Return to Offers & Requests page                                          | success |
+| Update Post                | Click edit button (own posts only)                                             | Edit post details                                                         | success |
+| Update Post                | Click on edit post                                                             | Post immediately updated                                                  | success |
+| Update Post                | Click on button no edit and to return to post                                  | Return to post without updating                                           | success |
+| Update Post                | User Feedback                                                                               | Success message  post updated                                             | success |
+| Update Post                | Try accessing a post from other users through URL (incognido mode and friends) | Updating posts from other users not possible                              | success |
+| Sign out                   | Click on Sign Out on navbar                                                    | Sign out from user account                                                | success |
+| Sign out                   | Sign out confirmation                                                          | Confirmation required to sign out in case of a mistake or change of heart | success |
+| Delete post                | Click on delete post in admin panel                                            | Delete post as admin                                                      | success |
+| Delete post                | Click on delete post (logged in)                                               | Delete own post as user                                                   | success |
+| Delete post                | Try accessing a post from other users through URL (incognido mode and friends) | Deleting posts from other users not possible                              | success |
+| Delete post                | Click button return to post                                                    | Return to post without deleting post                                      | success |
+| Like Post                  | Click like button (logged in)                                                  | Number of likes updates after liking a post and success message           | success |
+| Like Post                  | Not logged in                                                                  | Number of likes is visible if not logged in but button is not displayed   | success |
+| Unlike Post                | Click on button again to unlike post (logged in)                               | Number of likes updates after uniking a post and success message          | success |
+| Web accessability          | Explore the website using a screenreader                                       | Links are focusable using keyboard                                        | success |
+| Website Orientation        | Navigate between pages                                                         | Verify indication of current location on navigation bar                   | success |
+| Contact details site owner | Click on email link                                                            | Opens in default email app                                                | success |
+
