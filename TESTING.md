@@ -127,7 +127,7 @@ All testing for HTML was performed on the deployed website.
 </details>
 
 
-CSS
+#### CSS
 
 No errors were detected when passing through the official [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS.
 
@@ -137,7 +137,23 @@ No errors were detected when passing through the official [World Wide Web Consor
 ![css](/documentation/testing/css.png)
 </details>
 
-Lighthouse Testing
-WAVE Web Accessibility Evaluation Tool
-Manual Testing
+#### Lighthouse Testing
+
+All Lighthouse testing was performed on the deployed website.
+
+![Lighthouse desktop](/documentation/testing/lighthouse-desktop.png)
+
+![Lighthouse desktop](/documentation/testing/lighthouse-mobile.png)
+
+#### WAVE Web Accessibility Evaluation Tool
+
+[Wave WebAIM Validator](https://wave.webaim.org/) was used to validate web accessibility on the deployed website.
+
+![webaim](/documentation/testing/webaim.png)
+
+Alerts arise on overview of posts in Offers & Requests. The bootstrap cards are anchored and this approach doesn't seem to sit well with the validator. 
+
+Contrast errors are due to insufficient contrast of links in Django Allauth templates.
+
+### Manual Testing
 
