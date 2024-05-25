@@ -10,21 +10,17 @@ You can view the live project here [Helping Hands, Happy Hearts](https://helping
 
 ## Table of contents
 
-Introduction
-Project Goals
-User Experience
-Design
-Project planning
-- Wireframes
-- Database Schema
-- Agile Development Methods 
-    - Epics
-    - User Stories
-    - MoSCoW Prioritization
-    - Kanban board
-Features
-Deployment and Local Development
-Credits
+- [Introduction](#introduction)
+- [Project Goals](#project-goal)
+- [User Experience](#user-experience)
+- [Design](#design)
+- [Project planning](#project-planning)
+    - [Wireframes](#wireframes)
+    - [Database Schema](#database-schema)
+    - [Agile Development Methods (Epics, User Stories, MoSCoW Prioritization, Kanban board)](#agile-development-methods)
+- [Features](#features)
+- [Deployment and Local Development](#deployment-and-local-development)
+- [Credits](#credits)
 
 Testing and Bugs are documented in the separate file [TESTING.md](TESTING.md)
 

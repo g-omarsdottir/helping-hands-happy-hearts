@@ -7,14 +7,16 @@ You can read the documentation in the [README.md](README.md)
 
 ## Table of contents
 
-Automated Testing
-Validator Testing
-Python Linter
-HTML
-CSS
-Lighthouse Testing
-WAVE Web Accessibility Evaluation Tool
-Manual Testing
+- [Automated Testing](#automated-testing)
+    - [Validator Testing](#validator-testing)
+    - [Python](#python)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [Lighthouse Testing](#lighthouse-testing)
+    - [WAVE Web Accessibility Evaluation Tool](#wave-web-accessibility-evaluation-tool)
+- [Manual Testing](#manual-testing)
+- [Bugs](#bugs)
+- [Programs Used](#programs-used)
 
 ## Automated Testing
 
@@ -139,7 +141,7 @@ No errors were detected when passing through the official [World Wide Web Consor
 
 #### Lighthouse Testing
 
-All Lighthouse testing was performed on the deployed website.
+All Lighthouse testing was performed on the deployed website using Chrome Developer Tools Lighthouse Report.
 
 ![Lighthouse desktop](/documentation/testing/lighthouse-desktop.png)
 
@@ -187,8 +189,31 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 | Delete post                | Click button return to post                                                    | Return to post without deleting post                                      | success |
 | Like Post                  | Click like button (logged in)                                                  | Number of likes updates after liking a post and success message           | success |
 | Like Post                  | Not logged in                                                                  | Number of likes is visible if not logged in but button is not displayed   | success |
-| Unlike Post                | Click on button again to unlike post (logged in)                               | Number of likes updates after uniking a post and success message          | success |
+| Unlike Post                | Click on button again to unlike post (logged in)                               | Number of likes updates after unliking a post and success message          | success |
 | Web accessability          | Explore the website using a screenreader                                       | Links are focusable using keyboard                                        | success |
 | Website Orientation        | Navigate between pages                                                         | Verify indication of current location on navigation bar                   | success |
 | Contact details site owner | Click on email link                                                            | Opens in default email app                                                | success |
 
+
+## Bugs
+
+### Unsolved Bugs 
+
+There are no unsolved bugs in the deployed project.
+
+### Solved Bugs
+
+As a beginner developer, this project prioritized to learn developing using Django and involved a lot of trial and error. Due to the project's scope and time constraints, a dedicated bug tracking system was not implemented during development. However, a rigorous testing approach was employed to identify and resolve potential issues.
+
+**Transparency in Commits:** All identified and fixed bugs are thoroughly documented within the associated commit messages. This provides a clear record of the development process and ensures traceability for future reference. 
+
+For future iterations, a dedicated bug tracking system will be implemented for more comprehensive issue management utilizing the Agile Development Methods Kanban Board for a detailed overview.
+
+## Programs Used
+
+- [Python Linter Validator]( https://pep8ci.herokuapp.com/) provided by the Code Institute according to the PEP 8 style guide for validating the Python code.
+- [World Wide Web Consortium's validator](https://validator.w3.org/) was used for validating the HTML code.
+- [World Wide Web Consortium (W3C)](https://validator.w3.org/) validator for CSS stylesheet.
+- Chrome Developer Tools for Lighthouse Report.
+- [Wave WebAIM Validator](https://wave.webaim.org/) was used to validate web accessibility on the deployed website.
+- [Table-magic](https://stevecat.net/table-magic/) - to create manual testing for this TESTING.md
