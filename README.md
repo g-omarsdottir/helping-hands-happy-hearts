@@ -220,13 +220,85 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ## Features
 
+### Clean and User-Friendly Interface:
+
+- The website uses a clean layout with a clear visual hierarchy for easy navigation.
+- A limited color palette is used to avoid visual clutter.
+- Navigation elements (links and buttons) are prominently placed and clearly labeled.
+- The user’s current location on the website is always indicated.
+
+![navbar](/documentation/navbar.png)
+
+### Informative Homepage:
+
+- A clear and concise welcome message greets visitors. 
+- A brief description explains the website's concept of community support.
+- Contact details, including when to contact the site owner and average response time, are clearly displayed. The email link is clickable and opens in the user's default email app.
+- The GitHub account of the website developer is included in the footer. In theory, the social media accounts of the project would be linked in the footer.
+
+![feature-welcome](/documentation/feature-welcome.png)
+
+![feature-contact](/documentation/feature-contact.png)
+![feature-email](/documentation/feature-email.png)
+
+### Sign-Up and Sign-In
+
+- Everyone can view post listings and details, but users must be logged in to pin posts on the board.
+- A prominent "Sign Up" and "Sign-In link is available in the navigation bar.
+- A user-friendly form allows sign-up with email address, chosen username, and password.
+- Users choose a username for displaying author names on posts.
+- Clear error messages are displayed for invalid input during sign-up and login.
+- The templates are from Django Allauth and have the project's base template as background.
+
+![feature-signup](/documentation/feature-signup.png)
+
+### Create Post
+- A clearly visible "Create Post" link and button provide easy access to post creation.
+- A user-friendly form allows adding relevant information like title, description, category, and location.
+- Required fields are marked with an asterisk (*) for clear guidance.
+- Immediate feedback with solutions is provided for missing fields.
+- Users can publish posts immediately without waiting for approval, fostering a dynamic and helpful community.
+
+![feature-create](/documentation/feature-create.png)
+
+### Offers & Requests Page:
+
+- A list of available posts is displayed on the Offers & Requests page.
+- Posts are listed chronologically, with newest posts appearing first.
+- Each post displays a title, short description, and relevant details (category, location).
+
+![feature-board](/documentation/board.png)
+
+### Read, Update, Delete Management of Posts:
+
+- Users can click on the post on the overview and can view the post in detail.
+- Users can edit and delete their own posts using clearly visible options.
+- Edit and delete options are hidden for posts created by other users.
+
+![feature-detailpost](/documentation/feature-detailpost.png)
+
+![feature-edit-delete](/documentation/feature-edit-delete.png)
+
+### Liking Posts:
+
+- A like button allows users to like and unlike posts (toggle functionality).
+- The number of likes is displayed for each post.
+- The like button is hidden for non-logged-in users, but the like count remains visible and they are encouraged to sign up or sign in to participate.
+
+![like-unlike](/documentation/like.png)
+
+
+### Clear User Feedback to CRUD functunalites
+
+- - The user is informed of every successful creation, update or delete action with an alert message. The alert messages are elegantly provided with the Django utily SuccessMessageMixin.
+- Clear error messages are displayed for unsuccessful actions.
+- Clicking on a post displays the correct detailed post for easy reading.
+
+![success-messages](/documentation/success-messages.png)
+
 ### Responsiveness
 
 - Responsiveness was obtained using minimal code and no mediaqueries using Bootstrap 5 grid system. Since this project is to showcase coding abilities using Django and less emphasis is layed on frontend styling, I took advantage of being able to further practise my Bootstrap skills and achieve for maximum responsiveness with minimum amount of code.
-
-### User Feedback to CRUD functunalites
-
-- The user is informed of every successful creation, update or delete action with an alert message. The alert messages are elegantly provided with the Django utily SuccessMessageMixin.
 
 ### Security
 
