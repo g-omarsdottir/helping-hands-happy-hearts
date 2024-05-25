@@ -14,14 +14,29 @@ You can view the live project here [Helping Hands, Happy Hearts](https://helping
 - [Introduction](#introduction)
 - [Project Goals](#project-goal)
 - [User Experience](#user-experience)
+    - [Target Group](#target-group)
+    - [Visitors Goals](#visitors-goals)
 - [Design](#design)
-- [Project planning](#project-planning)
+    - [Layout](#layout)
     - [Wireframes](#wireframes)
+    - [Colors](#colors)
+- [Project planning](#project-planning)
     - [Database Schema](#database-schema)
     - [Agile Development Methods (Epics, User Stories, MoSCoW Prioritization, Kanban board)](#agile-development-methods)
 - [Features](#features)
+    - [Main Features](#main-features)
+    - [Responsiveness](#responsiveness)
+    - [Security](#security)
+    - [Future Features](#future-features)
 - [Deployment and Local Development](#deployment-and-local-development)
+    - [Database](#neon-database)
+    - [Deployment](#deployement-using-heroku)
+    - [Local Clone](#local-clone)
+    - [Fork](#fork)
 - [Credits](#credits)
+    - [Content](#content)
+    - [Imagery](#imagery)
+    - [Acknowledgements](#acknowledgements)
 
 Testing and Bugs are documented in the separate file [TESTING.md](TESTING.md)
 
@@ -45,7 +60,7 @@ Social Media influencers have a bounty of opportunities to create content and bo
 
 ## User Experience
 
-### Target Group/Audience
+### Target Group
 
 -	People seeking to offer or receive help within their local community. 
 -	People with diverse skills they would like to foster and put to good use.
@@ -54,6 +69,8 @@ Social Media influencers have a bounty of opportunities to create content and bo
 -	People who believe in the power of neighborly connections and want to contribute to a platform of small, impactful acts of kindness.
 -	Educators who want to connect classroom learning with real-world problem-solving while building empathy and confidence in their pupils by helping them discover their skills through service, which benefits both the community and personal development.
 -	Parents who want to foster kindness and community engagement in their children, while spending quality time together.
+
+### Visitors Goals
 
 ### First Time Visitors Goals
 
@@ -237,7 +254,9 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ## Features
 
-### Clean and User-Friendly Interface:
+### Main Features
+
+### Clean and User-Friendly Interface
 
 - The website uses a clean layout with a clear visual hierarchy for easy navigation.
 - A limited color palette is used to avoid visual clutter.
@@ -250,7 +269,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ![return](/documentation/feature-return.png)
 
-### Informative Homepage:
+### Informative Homepage
 
 - A clear and concise welcome message greets visitors. 
 - A brief description explains the website's concept of community support.
@@ -284,7 +303,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ![feature-create](/documentation/feature-create.png)
 
-### Offers & Requests Page:
+### Offers & Requests Page
 
 - A list of available posts is displayed on the Offers & Requests page.
 - Posts are listed chronologically, with newest posts appearing first.
@@ -292,7 +311,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ![feature-board](/documentation/board.png)
 
-### Read, Update, Delete Management of Posts:
+### Read, Update, Delete Management of Posts
 
 - Users can click on the post on the overview and can view the post in detail.
 - Users can edit and delete their own posts using clearly visible options.
@@ -302,7 +321,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 
 ![feature-edit-delete](/documentation/feature-edit-delete.png)
 
-### Liking Posts:
+### Liking Posts
 
 - A like button allows users to like and unlike posts (toggle functionality).
 - The number of likes is displayed for each post.
@@ -311,7 +330,7 @@ In addition to libraries and frameworks already installed in the Code Institute 
 ![like-unlike](/documentation/like.png)
 
 
-### Clear User Feedback to CRUD functunalites
+### Clear User Feedback to CRUD functionalities
 
 - - The user is informed of every successful creation, update or delete action with an alert message. The alert messages are elegantly provided with the Django utily SuccessMessageMixin.
 - Clear error messages are displayed for unsuccessful actions.
