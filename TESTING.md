@@ -193,9 +193,10 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 | Read Post                  | Click on post on overview board offers and requests                            | correct post opens displaying all details                                 | success |
 | Read Post                  | Click on button return to overview                                             | Return to Offers & Requests page                                          | success |
 | Update Post                | Click edit button (own posts only)                                             | Edit post details                                                         | success |
-| Update Post                | Click on edit post                                                             | Post immediately updated                                                  | success |
+| Update Post                | Click on submit button to edit post                                            | Post immediately updated                                                  | success |
+| Update Post                | Remove required fields and submit empty                                        | Error message and no submission                                           | success |
 | Update Post                | Click on button no edit and to return to post                                  | Return to post without updating                                           | success |
-| Update Post                | User Feedback                                                                               | Success message  post updated                                             | success |
+| Update Post                | User Feedback                                                                  | Success message  post updated                                             | success |
 | Update Post                | Try accessing a post from other users through URL (incognido mode and friends) | Updating posts from other users not possible                              | success |
 | Sign out                   | Click on Sign Out on navbar                                                    | Sign out from user account                                                | success |
 | Sign out                   | Sign out confirmation                                                          | Confirmation required to sign out in case of a mistake or change of heart | success |
@@ -205,11 +206,10 @@ Contrast errors are due to insufficient contrast of links in Django Allauth temp
 | Delete post                | Click button return to post                                                    | Return to post without deleting post                                      | success |
 | Like Post                  | Click like button (logged in)                                                  | Number of likes updates after liking a post and success message           | success |
 | Like Post                  | Not logged in                                                                  | Number of likes is visible if not logged in but button is not displayed   | success |
-| Unlike Post                | Click on button again to unlike post (logged in)                               | Number of likes updates after unliking a post and success message          | success |
+| Unlike Post                | Click on button again to unlike post (logged in)                               | Number of likes updates after uniking a post and success message          | success |
 | Web accessability          | Explore the website using a screenreader                                       | Links are focusable using keyboard                                        | success |
 | Website Orientation        | Navigate between pages                                                         | Verify indication of current location on navigation bar                   | success |
 | Contact details site owner | Click on email link                                                            | Opens in default email app                                                | success |
-
 
 ### Browser Compatibility
 
